@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { TrendingUp, MonitorCheck, Cpu, ArrowRight } from 'lucide-react';
 

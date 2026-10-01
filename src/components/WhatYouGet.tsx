@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { Cpu, Cloud, Monitor, CheckCircle, ArrowRight } from 'lucide-react';
 

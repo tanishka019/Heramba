@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { Phone, Mail, MessageSquare, Globe } from 'lucide-react';
 

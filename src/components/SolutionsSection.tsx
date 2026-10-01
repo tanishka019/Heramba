@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { Layers, Monitor, Tablet, Maximize, ArrowRight, Check } from 'lucide-react';
 

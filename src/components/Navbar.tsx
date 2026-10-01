@@ -1,9 +1,13 @@
+'use client';
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { 
   Tv, 
   Menu, 
   X, 
-  ArrowRight
+  ArrowRight,
+  Sparkles,
+  Sliders
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -28,6 +32,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTrial, onOpenContact }) =>
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.location.href = `/#${id}`;
     }
   };
 
@@ -51,9 +57,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTrial, onOpenContact }) =>
       }}>
         
         {/* Brand Logo */}
-        <a 
-          href="#"
-          onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+        <Link 
+          href="/"
           style={{ 
             display: 'flex', 
             alignItems: 'center', 
@@ -98,14 +103,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTrial, onOpenContact }) =>
               Digital Signage Solutions
             </div>
           </div>
-        </a>
+        </Link>
 
         {/* Desktop Nav Links */}
         <nav 
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '26px'
+            gap: '22px'
           }}
           id="desktop-nav"
         >
@@ -137,6 +142,63 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTrial, onOpenContact }) =>
               {item.label}
             </button>
           ))}
+
+          {/* Interactive Next.js App Routes */}
+          <Link
+            href="/simulator"
+            style={{
+              textDecoration: 'none',
+              color: '#0B369A',
+              fontSize: '13px',
+              fontWeight: 700,
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '5px',
+              backgroundColor: 'rgba(11, 54, 154, 0.08)',
+              padding: '6px 12px',
+              borderRadius: '6px',
+              transition: 'all 0.2s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = '#0B369A';
+              e.currentTarget.style.color = '#FFFFFF';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(11, 54, 154, 0.08)';
+              e.currentTarget.style.color = '#0B369A';
+            }}
+          >
+            <Sparkles size={13} />
+            <span>3D Simulator</span>
+          </Link>
+
+          <Link
+            href="/control-room"
+            style={{
+              textDecoration: 'none',
+              color: '#C34811',
+              fontSize: '13px',
+              fontWeight: 700,
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '5px',
+              backgroundColor: 'rgba(195, 72, 17, 0.08)',
+              padding: '6px 12px',
+              borderRadius: '6px',
+              transition: 'all 0.2s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = '#C34811';
+              e.currentTarget.style.color = '#FFFFFF';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(195, 72, 17, 0.08)';
+              e.currentTarget.style.color = '#C34811';
+            }}
+          >
+            <Sliders size={13} />
+            <span>Live CMS</span>
+          </Link>
         </nav>
 
         {/* Right CTA Actions */}
@@ -227,6 +289,44 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTrial, onOpenContact }) =>
             </button>
           ))}
 
+          {/* Subpage links in mobile menu */}
+          <div style={{ display: 'flex', gap: '10px', paddingTop: '6px' }}>
+            <Link
+              href="/simulator"
+              onClick={() => setMobileMenuOpen(false)}
+              style={{
+                flex: 1,
+                textAlign: 'center',
+                padding: '10px',
+                borderRadius: '6px',
+                backgroundColor: 'rgba(11, 54, 154, 0.08)',
+                color: '#0B369A',
+                fontWeight: 700,
+                textDecoration: 'none',
+                fontSize: '14px'
+              }}
+            >
+              3D Simulator
+            </Link>
+            <Link
+              href="/control-room"
+              onClick={() => setMobileMenuOpen(false)}
+              style={{
+                flex: 1,
+                textAlign: 'center',
+                padding: '10px',
+                borderRadius: '6px',
+                backgroundColor: 'rgba(195, 72, 17, 0.08)',
+                color: '#C34811',
+                fontWeight: 700,
+                textDecoration: 'none',
+                fontSize: '14px'
+              }}
+            >
+              Live CMS
+            </Link>
+          </div>
+
           <div style={{ paddingTop: '10px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
             <button
               onClick={() => { setMobileMenuOpen(false); onOpenTrial(); }}
@@ -247,7 +347,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTrial, onOpenContact }) =>
       )}
 
       <style>{`
-        @media (max-width: 990px) {
+        @media (max-width: 1040px) {
           #desktop-nav {
             display: none !important;
           }

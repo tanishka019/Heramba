@@ -1,21 +1,25 @@
-import React, { useState } from 'react';
-import { TopBar } from './components/TopBar';
-import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { IntroSummary } from './components/IntroSummary';
-import { SolutionsSection } from './components/SolutionsSection';
-import { FeaturesTabs } from './components/FeaturesTabs';
-import { VerticalsSection } from './components/VerticalsSection';
-import { WhatYouGet } from './components/WhatYouGet';
-import { AdvantagesSection } from './components/AdvantagesSection';
-import { Testimonials } from './components/Testimonials';
-import { FaqSection } from './components/FaqSection';
-import { ContactSection } from './components/ContactSection';
-import { Footer } from './components/Footer';
-import { FreeTrialModal } from './components/FreeTrialModal';
+'use client';
 
-export const App: React.FC = () => {
+import React, { useState } from 'react';
+import { TopBar } from '@/components/TopBar';
+import { Navbar } from '@/components/Navbar';
+import { Hero } from '@/components/Hero';
+import { IntroSummary } from '@/components/IntroSummary';
+import { SolutionsSection } from '@/components/SolutionsSection';
+import { FeaturesTabs } from '@/components/FeaturesTabs';
+import { VerticalsSection } from '@/components/VerticalsSection';
+import { WhatYouGet } from '@/components/WhatYouGet';
+import { AdvantagesSection } from '@/components/AdvantagesSection';
+import { Testimonials } from '@/components/Testimonials';
+import { FaqSection } from '@/components/FaqSection';
+import { ContactSection } from '@/components/ContactSection';
+import { Footer } from '@/components/Footer';
+import { FreeTrialModal } from '@/components/FreeTrialModal';
+import { CampaignEstimatorModal } from '@/components/CampaignEstimatorModal';
+
+export default function HomePage() {
   const [trialOpen, setTrialOpen] = useState(false);
+  const [estimatorOpen, setEstimatorOpen] = useState(false);
 
   const handleOpenTrial = () => {
     setTrialOpen(true);
@@ -23,6 +27,14 @@ export const App: React.FC = () => {
 
   const handleCloseTrial = () => {
     setTrialOpen(false);
+  };
+
+  const handleOpenEstimator = () => {
+    setEstimatorOpen(true);
+  };
+
+  const handleCloseEstimator = () => {
+    setEstimatorOpen(false);
   };
 
   const scrollToSection = (id: string) => {
@@ -105,8 +117,12 @@ export const App: React.FC = () => {
         isOpen={trialOpen}
         onClose={handleCloseTrial}
       />
+
+      {/* Interactive Campaign Estimator Modal */}
+      <CampaignEstimatorModal 
+        isOpen={estimatorOpen}
+        onClose={handleCloseEstimator}
+      />
     </div>
   );
-};
-
-export default App;
+}

@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import { Tv, CheckCircle2 } from 'lucide-react';
 
@@ -15,7 +16,11 @@ export const Footer: React.FC<{ onOpenTrial: () => void; onOpenContact: () => vo
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.location.href = `/#${id}`;
+    }
   };
 
   return (
