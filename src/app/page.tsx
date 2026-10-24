@@ -4,11 +4,7 @@ import React, { useState } from 'react';
 import { TopBar } from '@/components/TopBar';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
-import { IntroSummary } from '@/components/IntroSummary';
-import { SolutionsSection } from '@/components/SolutionsSection';
-import { FeaturesTabs } from '@/components/FeaturesTabs';
-import { VerticalsSection } from '@/components/VerticalsSection';
-import { WhatYouGet } from '@/components/WhatYouGet';
+import { PlatformShowcase } from '@/components/PlatformShowcase';
 import { AdvantagesSection } from '@/components/AdvantagesSection';
 import { Testimonials } from '@/components/Testimonials';
 import { FaqSection } from '@/components/FaqSection';
@@ -21,108 +17,62 @@ export default function HomePage() {
   const [trialOpen, setTrialOpen] = useState(false);
   const [estimatorOpen, setEstimatorOpen] = useState(false);
 
-  const handleOpenTrial = () => {
-    setTrialOpen(true);
-  };
-
-  const handleCloseTrial = () => {
-    setTrialOpen(false);
-  };
-
-  const handleOpenEstimator = () => {
-    setEstimatorOpen(true);
-  };
-
-  const handleCloseEstimator = () => {
-    setEstimatorOpen(false);
-  };
+  const handleOpenTrial = () => setTrialOpen(true);
+  const handleCloseTrial = () => setTrialOpen(false);
+  const handleOpenEstimator = () => setEstimatorOpen(true);
+  const handleCloseEstimator = () => setEstimatorOpen(false);
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <div className="heramba-app" style={{ minHeight: '100vh', backgroundColor: '#FFFFFF', color: 'var(--text-body)' }}>
-      {/* Intelisa-Style Top Contact Bar */}
+      {/* Top Contact Bar */}
       <TopBar />
 
-      {/* Main Sticky Navbar */}
-      <Navbar 
+      {/* Sticky Navbar */}
+      <Navbar
         onOpenTrial={handleOpenTrial}
         onOpenContact={() => scrollToSection('contact')}
       />
 
-      {/* Main Page Flow */}
       <main>
         {/* Hero Section */}
-        <Hero 
+        <Hero
           onOpenTrial={handleOpenTrial}
           onOpenContact={() => scrollToSection('contact')}
         />
 
-        {/* Next-gen Platform Overview (Amplify engagement 3X-5X) */}
-        <IntroSummary 
-          onOpenTrial={handleOpenTrial}
-        />
+        {/* Interactive Platform Architecture Showcase */}
+        <PlatformShowcase onOpenTrial={handleOpenTrial} />
 
-        {/* Product Ecosystem (Software, Standees, Video Walls, Turnkey) */}
-        <SolutionsSection 
-          onOpenTrial={handleOpenTrial}
-        />
-
-        {/* Our Host of Features (3-Pillar Tabbed System) */}
-        <FeaturesTabs 
-          onOpenTrial={handleOpenTrial}
-        />
-
-        {/* Sectors & Verticals (Retail, Restaurants, Corporate, Healthcare, etc.) */}
-        <VerticalsSection 
-          onOpenTrial={handleOpenTrial}
-        />
-
-        {/* What You Get (Hardware Player + Cloud Software + Commercial Displays) */}
-        <WhatYouGet 
-          onOpenTrial={handleOpenTrial}
-        />
-
-        {/* Heramba Advantages (8 Core Business ROI Points + 50% Off Offer) */}
-        <AdvantagesSection 
+        {/* Heramba Advantages */}
+        <AdvantagesSection
           onOpenTrial={handleOpenTrial}
           onOpenContact={() => scrollToSection('contact')}
         />
 
-        {/* Client Testimonials (Clinic Chain, 250+ Retail Stores, IT Reseller) */}
+        {/* Client Testimonials */}
         <Testimonials />
 
-        {/* Frequently Asked Questions Accordion */}
-        <FaqSection 
-          onOpenTrial={handleOpenTrial}
-        />
+        {/* FAQ */}
+        <FaqSection onOpenTrial={handleOpenTrial} />
 
-        {/* Get in Touch & Regional Offices (Mumbai HQ, Hyderabad, Bengaluru, Canada) */}
+        {/* Contact Section */}
         <ContactSection />
       </main>
 
-      {/* Clean Light Footer with Newsletter */}
-      <Footer 
+      {/* Footer */}
+      <Footer
         onOpenTrial={handleOpenTrial}
         onOpenContact={() => scrollToSection('contact')}
       />
 
-      {/* 14-Day Free Trial Modal */}
-      <FreeTrialModal 
-        isOpen={trialOpen}
-        onClose={handleCloseTrial}
-      />
-
-      {/* Interactive Campaign Estimator Modal */}
-      <CampaignEstimatorModal 
-        isOpen={estimatorOpen}
-        onClose={handleCloseEstimator}
-      />
+      {/* Modals */}
+      <FreeTrialModal isOpen={trialOpen} onClose={handleCloseTrial} />
+      <CampaignEstimatorModal isOpen={estimatorOpen} onClose={handleCloseEstimator} />
     </div>
   );
 }

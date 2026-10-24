@@ -1,22 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
 :root {
-  /* Brand Palette */
-  --terracotta: #C34811;           /* BURNT TERRACOTTA */
-  --terracotta-hover: #A83D0D;
-  --terracotta-light: rgba(195, 72, 17, 0.08);
-  --terracotta-border: rgba(195, 72, 17, 0.25);
+  /* Brand Palette — Light Orange, Grey, and White */
+  --light-orange: #FF772A;         /* VIBRANT LIGHT ORANGE */
+  --light-orange-hover: #E66212;
+  --light-orange-light: rgba(255, 119, 42, 0.09);
+  --light-orange-border: rgba(255, 119, 42, 0.28);
   
-  --gallery-blue: #0B369A;         /* GALLERY BLUE */
-  --gallery-blue-hover: #082975;
-  --gallery-blue-light: rgba(11, 54, 154, 0.08);
-  --gallery-blue-border: rgba(11, 54, 154, 0.25);
+  --terracotta: #FF772A;           /* Primary Accent: Light Orange */
+  --terracotta-hover: #E66212;
+  --terracotta-light: rgba(255, 119, 42, 0.09);
+  --terracotta-border: rgba(255, 119, 42, 0.28);
   
-  --stone-linen: #D9D1CA;          /* STONE LINEN */
-  --stone-linen-light: #F7F5F2;
+  --gallery-blue: #2B3445;         /* Elegant Slate Charcoal Grey (replaces blue) */
+  --gallery-blue-hover: #1E2532;
+  --gallery-blue-light: rgba(43, 52, 69, 0.07);
+  --gallery-blue-border: rgba(43, 52, 69, 0.2);
+  
+  --stone-linen: #E2E5EA;          /* Clean Structural Grey */
+  --stone-linen-light: #F7F8FA;
   --stone-linen-card: #FFFFFF;
-  --stone-linen-hover: #ECE7E1;
-  --stone-linen-border: #D9D1CA;
+  --stone-linen-hover: #EBEEF3;
+  --stone-linen-border: #E2E5EA;
   
   /* Primary mapped tokens */
   --primary: var(--terracotta);
@@ -30,32 +35,32 @@
   
   /* Neutral Foundation */
   --bg-white: #FFFFFF;
-  --bg-subtle: #F7F5F2;            /* Stone Linen soft wash */
+  --bg-subtle: #F8F9FA;            /* Soft light grey wash */
   --bg-card: #FFFFFF;
-  --bg-muted: #EFEBE6;
+  --bg-muted: #EFF1F5;
   
   /* Typography Colors */
-  --text-dark: #121826;
-  --text-body: #374151;
-  --text-muted: #5E6778;
+  --text-dark: #191D24;
+  --text-body: #4A5260;
+  --text-muted: #717B8C;
   --text-blue: var(--gallery-blue);
   --text-terracotta: var(--terracotta);
   
   /* Borders */
-  --border-light: #E5E0D8;
-  --border-medium: #D9D1CA;
-  --border-linen: #D9D1CA;
+  --border-light: #E8EBEF;
+  --border-medium: #D8DCE3;
+  --border-linen: #E2E5EA;
   
   /* Fonts */
   --font-heading: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   
   /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(18, 24, 38, 0.04);
-  --shadow-card: 0 4px 20px -2px rgba(18, 24, 38, 0.05), 0 2px 6px -1px rgba(18, 24, 38, 0.03);
-  --shadow-hover: 0 12px 30px -4px rgba(11, 54, 154, 0.08), 0 4px 12px -2px rgba(195, 72, 17, 0.06);
-  --shadow-terracotta: 0 4px 16px rgba(195, 72, 17, 0.28);
-  --shadow-blue: 0 4px 16px rgba(11, 54, 154, 0.25);
+  --shadow-sm: 0 1px 3px rgba(25, 29, 36, 0.04);
+  --shadow-card: 0 4px 20px -2px rgba(25, 29, 36, 0.05), 0 2px 6px -1px rgba(25, 29, 36, 0.03);
+  --shadow-hover: 0 14px 32px -4px rgba(43, 52, 69, 0.09), 0 4px 12px -2px rgba(255, 119, 42, 0.09);
+  --shadow-terracotta: 0 6px 20px rgba(255, 119, 42, 0.28);
+  --shadow-blue: 0 6px 20px rgba(43, 52, 69, 0.18);
   
   /* Radii */
   --radius-sm: 6px;
@@ -155,25 +160,25 @@ h1, h2, h3, h4, h5, h6 {
 .btn-primary {
   background-color: var(--terracotta);
   color: #FFFFFF;
-  box-shadow: var(--shadow-terracotta);
+  box-shadow: 0 4px 14px rgba(255, 119, 42, 0.28);
 }
 
 .btn-primary:hover {
   background-color: var(--terracotta-hover);
   transform: translateY(-1px);
-  box-shadow: 0 6px 22px rgba(195, 72, 17, 0.4);
+  box-shadow: 0 8px 24px rgba(255, 119, 42, 0.36);
 }
 
 .btn-blue {
   background-color: var(--gallery-blue);
   color: #FFFFFF;
-  box-shadow: var(--shadow-blue);
+  box-shadow: 0 4px 14px rgba(43, 52, 69, 0.2);
 }
 
 .btn-blue:hover {
   background-color: var(--gallery-blue-hover);
   transform: translateY(-1px);
-  box-shadow: 0 6px 22px rgba(11, 54, 154, 0.35);
+  box-shadow: 0 8px 22px rgba(43, 52, 69, 0.3);
 }
 
 .btn-secondary {

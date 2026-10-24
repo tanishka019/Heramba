@@ -38,36 +38,27 @@ export const FaqSection: React.FC<{ onOpenTrial: () => void }> = () => {
 
   return (
     <section id="faq" style={{
-      backgroundColor: '#F7F5F2', /* Stone Linen light wash */
-      padding: '90px 0',
-      borderBottom: '1px solid #D9D1CA'
+      backgroundColor: '#F8F9FA',
+      padding: '95px 0',
+      borderBottom: '1px solid #E2E5EA'
     }}>
       <div className="container" style={{ maxWidth: '880px' }}>
         
         {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-          <div style={{
-            fontSize: '13px',
-            fontWeight: 700,
-            letterSpacing: '0.08em',
-            color: '#C34811',
-            textTransform: 'uppercase',
-            marginBottom: '8px'
-          }}>
-            FREQUENTLY ASKED QUESTIONS
-          </div>
-
+        <div style={{ textAlign: 'center', marginBottom: '52px' }}>
           <h2 style={{
-            fontSize: 'clamp(28px, 4vw, 40px)',
+            fontSize: 'clamp(30px, 4.2vw, 44px)',
             fontWeight: 800,
-            color: '#121826',
-            marginBottom: '12px'
+            color: '#191D24',
+            letterSpacing: '-0.03em',
+            lineHeight: 1.2,
+            marginBottom: '14px'
           }}>
-            Everything You Need to Know
+            Frequently Asked Questions
           </h2>
 
-          <p style={{ fontSize: '16px', color: '#5E6778' }}>
-            Got questions about setup, hardware compatibility, or offline playback? We've got answers.
+          <p style={{ fontSize: '16px', color: '#717B8C', lineHeight: 1.6, margin: 0 }}>
+            Everything you need to know about setup, display compatibility, and offline playback.
           </p>
         </div>
 
@@ -80,9 +71,9 @@ export const FaqSection: React.FC<{ onOpenTrial: () => void }> = () => {
                 key={idx}
                 style={{
                   background: '#FFFFFF',
-                  border: isOpen ? '1px solid #0B369A' : '1px solid #D9D1CA',
-                  borderRadius: '10px',
-                  boxShadow: isOpen ? '0 4px 14px rgba(11, 54, 154, 0.08)' : '0 1px 3px rgba(0, 0, 0, 0.04)',
+                  border: isOpen ? '1px solid rgba(255, 119, 42, 0.45)' : '1px solid #E2E5EA',
+                  borderRadius: '12px',
+                  boxShadow: isOpen ? '0 8px 24px -4px rgba(43, 52, 69, 0.08), 0 2px 6px -1px rgba(255, 119, 42, 0.06)' : '0 2px 6px rgba(25, 29, 36, 0.02)',
                   overflow: 'hidden',
                   transition: 'all 0.2s ease'
                 }}
@@ -91,7 +82,7 @@ export const FaqSection: React.FC<{ onOpenTrial: () => void }> = () => {
                   onClick={() => toggle(idx)}
                   style={{
                     width: '100%',
-                    padding: '20px 24px',
+                    padding: '22px 26px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
@@ -101,28 +92,45 @@ export const FaqSection: React.FC<{ onOpenTrial: () => void }> = () => {
                     cursor: 'pointer'
                   }}
                 >
-                  <span style={{ fontSize: '16px', fontWeight: 700, color: isOpen ? '#0B369A' : '#121826', paddingRight: '16px' }}>
+                  <span style={{
+                    fontSize: '16.5px',
+                    fontWeight: 700,
+                    color: isOpen ? '#FF772A' : '#191D24',
+                    paddingRight: '18px',
+                    lineHeight: 1.4,
+                    transition: 'color 0.15s ease'
+                  }}>
                     {faq.q}
                   </span>
-                  <ChevronDown
-                    size={18}
-                    color={isOpen ? '#C34811' : '#5E6778'}
-                    style={{
-                      transform: isOpen ? 'rotate(180deg)' : 'none',
-                      transition: 'transform 0.2s ease',
-                      flexShrink: 0
-                    }}
-                  />
+                  <div style={{
+                    width: '32px',
+                    height: '32px',
+                    borderRadius: '50%',
+                    backgroundColor: isOpen ? 'rgba(255, 119, 42, 0.09)' : '#F8F9FA',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0
+                  }}>
+                    <ChevronDown
+                      size={18}
+                      color={isOpen ? '#FF772A' : '#717B8C'}
+                      style={{
+                        transform: isOpen ? 'rotate(180deg)' : 'none',
+                        transition: 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
+                      }}
+                    />
+                  </div>
                 </button>
 
                 {isOpen && (
                   <div style={{
-                    padding: '0 24px 20px 24px',
-                    fontSize: '14px',
-                    color: '#4B5563',
-                    lineHeight: 1.6,
-                    borderTop: '1px solid #ECE7E1',
-                    paddingTop: '16px'
+                    padding: '0 26px 24px 26px',
+                    fontSize: '14.5px',
+                    color: '#4A5260',
+                    lineHeight: 1.65,
+                    borderTop: '1px solid #F1F3F5',
+                    paddingTop: '18px'
                   }}>
                     {faq.a}
                   </div>

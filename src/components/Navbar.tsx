@@ -1,41 +1,65 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { 
-  Tv, 
-  Menu, 
-  X, 
+import { usePathname } from 'next/navigation';
+import {
+  Tv,
+  Menu,
+  X,
   ArrowRight,
   Sparkles,
-  Sliders
+  Sliders,
+  LogIn,
 } from 'lucide-react';
+import { useAuth } from '@/context/AuthContext';
+import { AuthModal } from '@/components/AuthModal';
+import { UserMenu } from '@/components/UserMenu';
 
 interface NavbarProps {
   onOpenTrial: () => void;
   onOpenContact: () => void;
 }
 
+// Primary nav items — each is a distinct page route
+const NAV_ITEMS = [
+  { label: 'Home',       href: '/' },
+  { label: 'Solutions',  href: '/solutions' },
+  { label: 'Features',   href: '/features' },
+  { label: 'Sectors',    href: '/sectors' },
+  { label: 'Pricing',    href: '/pricing' },
+] as const;
+
 export const Navbar: React.FC<NavbarProps> = ({ onOpenTrial, onOpenContact }) => {
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled]         = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [authOpen, setAuthOpen]         = useState(false);
+  const { user, isLoading }             = useAuth();
+  const pathname                        = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollTo = (id: string) => {
+  // Close mobile menu on route change
+  useEffect(() => {
     setMobileMenuOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      window.location.href = `/#${id}`;
+  }, [pathname]);
+
+  function isActive(href: string) {
+    if (href === '/') return pathname === '/';
+    return pathname === href || pathname.startsWith(href + '/');
+  }
+
+  function handleContactClick() {
+    setMobileMenuOpen(false);
+    if (pathname === '/') {
+      const el = document.getElementById('contact');
+      if (el) { el.scrollIntoView({ behavior: 'smooth' }); return; }
     }
-  };
+    window.location.href = '/#contact';
+  }
 
   return (
     <header style={{
@@ -44,128 +68,125 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTrial, onOpenContact }) =>
       left: 0,
       right: 0,
       zIndex: 100,
-      backgroundColor: '#FFFFFF',
-      borderBottom: '1px solid #D9D1CA',
-      boxShadow: scrolled ? '0 4px 20px rgba(11, 54, 154, 0.06)' : 'none',
-      transition: 'box-shadow 0.2s ease'
+      backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.94)' : 'rgba(255, 255, 255, 0.85)',
+      backdropFilter: 'blur(16px)',
+      WebkitBackdropFilter: 'blur(16px)',
+      borderBottom: '1px solid rgba(226, 229, 234, 0.85)',
+      boxShadow: scrolled ? '0 8px 30px -4px rgba(43, 52, 69, 0.07)' : 'none',
+      transition: 'background-color 0.25s ease, box-shadow 0.25s ease',
     }}>
       <div className="container-wide" style={{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        height: '74px'
+        height: '74px',
       }}>
-        
-        {/* Brand Logo */}
-        <Link 
+
+        {/* ── Brand Logo ── */}
+        <Link
           href="/"
-          style={{ 
-            display: 'flex', 
-            alignItems: 'center', 
-            gap: '12px', 
-            textDecoration: 'none',
-            color: '#111827' 
-          }}
+          style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }}
         >
           <div style={{
-            width: '40px',
-            height: '40px',
-            borderRadius: '10px',
-            backgroundColor: '#C34811', /* BURNT TERRACOTTA */
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
+            width: '40px', height: '40px', borderRadius: '10px',
+            backgroundColor: '#FF772A',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
             color: '#FFFFFF',
-            boxShadow: '0 3px 10px rgba(195, 72, 17, 0.3)'
+            boxShadow: '0 4px 14px rgba(255, 119, 42, 0.35)',
           }}>
             <Tv size={22} />
           </div>
-
           <div>
-            <div style={{
-              fontFamily: 'var(--font-heading)',
-              fontSize: '22px',
-              fontWeight: 800,
-              letterSpacing: '-0.03em',
-              lineHeight: 1,
-              color: '#0B369A' /* GALLERY BLUE */
-            }}>
-              HERAMBA<span style={{ color: '#C34811' }}>.</span>
+            <div style={{ fontFamily: 'var(--font-heading)', fontSize: '22px', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1, color: '#191D24' }}>
+              HERAMBA<span style={{ color: '#FF772A' }}>.</span>
             </div>
-            <div style={{
-              fontSize: '10px',
-              color: '#5E6778',
-              fontWeight: 600,
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-              marginTop: '3px'
-            }}>
+            <div style={{ fontSize: '10px', color: '#717B8C', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: '3px' }}>
               Digital Signage Solutions
             </div>
           </div>
         </Link>
 
-        {/* Desktop Nav Links */}
-        <nav 
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '22px'
-          }}
-          id="desktop-nav"
-        >
-          {[
-            { label: 'Solutions', id: 'solutions' },
-            { label: 'Features', id: 'features' },
-            { label: 'Sectors & Verticals', id: 'sectors' },
-            { label: 'What You Get', id: 'what-you-get' },
-            { label: 'Advantages', id: 'advantages' },
-            { label: 'Testimonials', id: 'testimonials' },
-            { label: 'FAQ', id: 'faq' },
-          ].map((item) => (
-            <button
-              key={item.id}
-              onClick={() => scrollTo(item.id)}
-              style={{
-                background: 'none',
-                border: 'none',
-                color: '#374151',
-                fontSize: '14px',
-                fontWeight: 600,
-                cursor: 'pointer',
-                padding: '6px 0',
-                transition: 'color 0.2s'
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.color = '#C34811'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#374151'}
-            >
-              {item.label}
-            </button>
-          ))}
+        {/* ── Desktop Nav ── */}
+        <nav style={{ display: 'flex', alignItems: 'center', gap: '4px' }} id="desktop-nav">
+          {NAV_ITEMS.map((item) => {
+            const active = isActive(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                style={{
+                  textDecoration: 'none',
+                  position: 'relative',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  padding: '8px 14px',
+                  borderRadius: '8px',
+                  fontSize: '14px',
+                  fontWeight: 700,
+                  color: active ? '#FF772A' : '#4A5260',
+                  backgroundColor: active ? 'rgba(255, 119, 42, 0.09)' : 'transparent',
+                  transition: 'all 0.18s',
+                }}
+                onMouseEnter={(e) => {
+                  if (!active) {
+                    e.currentTarget.style.color = '#FF772A';
+                    e.currentTarget.style.backgroundColor = 'rgba(255, 119, 42, 0.06)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!active) {
+                    e.currentTarget.style.color = '#4A5260';
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                  }
+                }}
+              >
+                {item.label}
+                {active && (
+                  <span style={{
+                    position: 'absolute', bottom: '3px', left: '50%', transform: 'translateX(-50%)',
+                    width: '4px', height: '4px', borderRadius: '50%',
+                    backgroundColor: '#FF772A',
+                  }} />
+                )}
+              </Link>
+            );
+          })}
 
-          {/* Interactive Next.js App Routes */}
+          {/* Contact — scrolls to home#contact */}
+          <button
+            onClick={handleContactClick}
+            style={{
+              background: 'none', border: 'none', cursor: 'pointer',
+              display: 'inline-flex', alignItems: 'center',
+              padding: '8px 14px', borderRadius: '8px',
+              fontSize: '14px', fontWeight: 700, color: '#4A5260',
+              transition: 'all 0.18s',
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.color = '#FF772A'; e.currentTarget.style.backgroundColor = 'rgba(255, 119, 42, 0.06)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = '#4A5260'; e.currentTarget.style.backgroundColor = 'transparent'; }}
+          >
+            Contact
+          </button>
+
+          {/* Divider */}
+          <div style={{ width: '1px', height: '24px', background: '#E2E5EA', margin: '0 8px' }} />
+
+          {/* Interactive sub-app routes */}
           <Link
             href="/simulator"
             style={{
-              textDecoration: 'none',
-              color: '#0B369A',
-              fontSize: '13px',
-              fontWeight: 700,
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '5px',
-              backgroundColor: 'rgba(11, 54, 154, 0.08)',
-              padding: '6px 12px',
-              borderRadius: '6px',
-              transition: 'all 0.2s ease'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#0B369A';
-              e.currentTarget.style.color = '#FFFFFF';
-            }}
+              textDecoration: 'none', fontSize: '13px', fontWeight: 700,
+              display: 'inline-flex', alignItems: 'center', gap: '5px',
+              backgroundColor: isActive('/simulator') ? '#2B3445' : 'rgba(43, 52, 69, 0.07)',
+              color: isActive('/simulator') ? '#FFF' : '#2B3445',
+              padding: '6px 12px', borderRadius: '6px', transition: 'all 0.2s ease',
+            } as React.CSSProperties}
+            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#2B3445'; e.currentTarget.style.color = '#FFF'; }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(11, 54, 154, 0.08)';
-              e.currentTarget.style.color = '#0B369A';
+              if (!isActive('/simulator')) {
+                e.currentTarget.style.backgroundColor = 'rgba(43, 52, 69, 0.07)';
+                e.currentTarget.style.color = '#2B3445';
+              }
             }}
           >
             <Sparkles size={13} />
@@ -175,71 +196,74 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTrial, onOpenContact }) =>
           <Link
             href="/control-room"
             style={{
-              textDecoration: 'none',
-              color: '#C34811',
-              fontSize: '13px',
-              fontWeight: 700,
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '5px',
-              backgroundColor: 'rgba(195, 72, 17, 0.08)',
-              padding: '6px 12px',
-              borderRadius: '6px',
-              transition: 'all 0.2s ease'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#C34811';
-              e.currentTarget.style.color = '#FFFFFF';
-            }}
+              textDecoration: 'none', fontSize: '13px', fontWeight: 700,
+              display: 'inline-flex', alignItems: 'center', gap: '6px',
+              backgroundColor: isActive('/control-room') ? '#FF772A' : 'rgba(255, 119, 42, 0.08)',
+              color: isActive('/control-room') ? '#FFF' : '#FF772A',
+              border: '1px solid rgba(255, 119, 42, 0.2)',
+              padding: '6px 12px', borderRadius: '6px', transition: 'all 0.2s ease',
+            } as React.CSSProperties}
+            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#FF772A'; e.currentTarget.style.color = '#FFF'; }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(195, 72, 17, 0.08)';
-              e.currentTarget.style.color = '#C34811';
+              if (!isActive('/control-room')) {
+                e.currentTarget.style.backgroundColor = 'rgba(255, 119, 42, 0.08)';
+                e.currentTarget.style.color = '#FF772A';
+              }
             }}
           >
+            <span style={{
+              width: '6px',
+              height: '6px',
+              borderRadius: '50%',
+              backgroundColor: isActive('/control-room') ? '#FFFFFF' : '#10B981',
+              boxShadow: '0 0 0 2px rgba(16, 185, 129, 0.25)',
+              display: 'inline-block'
+            }} />
             <Sliders size={13} />
             <span>Live CMS</span>
           </Link>
         </nav>
 
-        {/* Right CTA Actions */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-          <button
-            onClick={() => alert('Heramba Cloud CMS Login Portal: Redirecting to app.heramba.in...')}
-            style={{
-              background: 'none',
-              border: 'none',
-              color: '#0B369A',
-              fontSize: '14px',
-              fontWeight: 700,
-              cursor: 'pointer',
-              padding: '8px 12px'
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.color = '#C34811'}
-            onMouseLeave={(e) => e.currentTarget.style.color = '#0B369A'}
-          >
-            Customer Login
-          </button>
+        {/* ── Right CTA Actions ── */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          {!isLoading && (
+            user ? (
+              <UserMenu />
+            ) : (
+              <button
+                id="navbar-login-btn"
+                onClick={() => setAuthOpen(true)}
+                style={{
+                  display: 'flex', alignItems: 'center', gap: '6px',
+                  background: 'none', border: 'none',
+                  color: '#2B3445', fontSize: '14px', fontWeight: 700,
+                  cursor: 'pointer', padding: '8px 12px',
+                  transition: 'color 0.2s',
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#FF772A'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#2B3445'}
+              >
+                <LogIn size={15} />
+                Login
+              </button>
+            )
+          )}
 
           <button
             onClick={onOpenTrial}
             className="btn btn-primary"
             style={{ padding: '10px 22px', fontSize: '13px' }}
           >
-            <span>Get a Free Trial</span>
+            <span>Free Trial</span>
             <ArrowRight size={14} />
           </button>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             style={{
-              display: 'none',
-              background: '#F7F5F2',
-              border: '1px solid #D9D1CA',
-              color: '#0B369A',
-              padding: '8px',
-              borderRadius: '6px',
-              cursor: 'pointer'
+              display: 'none', background: '#F8F9FA', border: '1px solid #E2E5EA',
+              color: '#2B3445', padding: '8px', borderRadius: '6px', cursor: 'pointer',
             }}
             id="mobile-nav-toggle"
             aria-label="Toggle menu"
@@ -247,87 +271,63 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTrial, onOpenContact }) =>
             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
-
       </div>
 
-      {/* Mobile Drawer */}
+      {/* ── Mobile Drawer ── */}
       {mobileMenuOpen && (
         <div style={{
           backgroundColor: '#FFFFFF',
-          borderBottom: '1px solid #D9D1CA',
-          padding: '20px',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '12px'
+          borderBottom: '1px solid #E2E5EA',
+          padding: '16px 20px 20px',
+          display: 'flex', flexDirection: 'column', gap: '4px',
         }}>
-          {[
-            { label: 'Solutions', id: 'solutions' },
-            { label: 'Our Host of Features', id: 'features' },
-            { label: 'Sectors & Verticals', id: 'sectors' },
-            { label: 'What You Get (Hardware + Cloud)', id: 'what-you-get' },
-            { label: 'Heramba Advantages', id: 'advantages' },
-            { label: 'Client Testimonials', id: 'testimonials' },
-            { label: 'FAQ', id: 'faq' },
-            { label: 'Contact Us', id: 'contact' }
-          ].map((item, idx) => (
-            <button
-              key={idx}
-              onClick={() => scrollTo(item.id)}
-              style={{
-                background: 'none',
-                border: 'none',
-                textAlign: 'left',
-                padding: '10px 0',
-                fontSize: '16px',
-                fontWeight: 600,
-                color: '#121826',
-                borderBottom: '1px solid #F7F5F2',
-                cursor: 'pointer'
-              }}
-            >
-              {item.label}
-            </button>
-          ))}
+          {NAV_ITEMS.map((item) => {
+            const active = isActive(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                style={{
+                  display: 'block', padding: '12px 14px',
+                  borderRadius: '8px', textDecoration: 'none',
+                  fontSize: '16px', fontWeight: 700,
+                  color: active ? '#FF772A' : '#191D24',
+                  backgroundColor: active ? 'rgba(255, 119, 42, 0.08)' : 'transparent',
+                  borderLeft: active ? '3px solid #FF772A' : '3px solid transparent',
+                  transition: 'all 0.15s',
+                }}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
 
-          {/* Subpage links in mobile menu */}
-          <div style={{ display: 'flex', gap: '10px', paddingTop: '6px' }}>
-            <Link
-              href="/simulator"
-              onClick={() => setMobileMenuOpen(false)}
-              style={{
-                flex: 1,
-                textAlign: 'center',
-                padding: '10px',
-                borderRadius: '6px',
-                backgroundColor: 'rgba(11, 54, 154, 0.08)',
-                color: '#0B369A',
-                fontWeight: 700,
-                textDecoration: 'none',
-                fontSize: '14px'
-              }}
-            >
+          {/* Contact */}
+          <button
+            onClick={handleContactClick}
+            style={{
+              display: 'block', padding: '12px 14px', width: '100%', textAlign: 'left',
+              borderRadius: '8px', background: 'none', border: 'none',
+              fontSize: '16px', fontWeight: 700, color: '#191D24',
+              borderLeft: '3px solid transparent', cursor: 'pointer',
+            }}
+          >
+            Contact
+          </button>
+
+          <div style={{ height: '1px', background: '#E2E5EA', margin: '8px 0' }} />
+
+          {/* Sub-app routes */}
+          <div style={{ display: 'flex', gap: '10px' }}>
+            <Link href="/simulator" style={{ flex: 1, textAlign: 'center', padding: '10px', borderRadius: '6px', backgroundColor: 'rgba(43,52,69,0.08)', color: '#2B3445', fontWeight: 700, textDecoration: 'none', fontSize: '14px' }}>
               3D Simulator
             </Link>
-            <Link
-              href="/control-room"
-              onClick={() => setMobileMenuOpen(false)}
-              style={{
-                flex: 1,
-                textAlign: 'center',
-                padding: '10px',
-                borderRadius: '6px',
-                backgroundColor: 'rgba(195, 72, 17, 0.08)',
-                color: '#C34811',
-                fontWeight: 700,
-                textDecoration: 'none',
-                fontSize: '14px'
-              }}
-            >
+            <Link href="/control-room" style={{ flex: 1, textAlign: 'center', padding: '10px', borderRadius: '6px', backgroundColor: 'rgba(255,119,42,0.09)', color: '#FF772A', fontWeight: 700, textDecoration: 'none', fontSize: '14px' }}>
               Live CMS
             </Link>
           </div>
 
-          <div style={{ paddingTop: '10px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          <div style={{ paddingTop: '8px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <button
               onClick={() => { setMobileMenuOpen(false); onOpenTrial(); }}
               className="btn btn-primary"
@@ -335,27 +335,27 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTrial, onOpenContact }) =>
             >
               Get a Free Trial
             </button>
-            <button
-              onClick={() => { setMobileMenuOpen(false); onOpenContact(); }}
-              className="btn btn-secondary"
-              style={{ width: '100%', justifyContent: 'center' }}
-            >
-              Contact Sales
-            </button>
+            {!user && (
+              <button
+                onClick={() => { setMobileMenuOpen(false); setAuthOpen(true); }}
+                className="btn btn-secondary"
+                style={{ width: '100%', justifyContent: 'center', borderColor: '#2B3445', color: '#2B3445' }}
+              >
+                <LogIn size={15} /> Customer Login
+              </button>
+            )}
           </div>
         </div>
       )}
 
       <style>{`
-        @media (max-width: 1040px) {
-          #desktop-nav {
-            display: none !important;
-          }
-          #mobile-nav-toggle {
-            display: flex !important;
-          }
+        @media (max-width: 1100px) {
+          #desktop-nav { display: none !important; }
+          #mobile-nav-toggle { display: flex !important; }
         }
       `}</style>
+
+      <AuthModal isOpen={authOpen} onClose={() => setAuthOpen(false)} />
     </header>
   );
 };
