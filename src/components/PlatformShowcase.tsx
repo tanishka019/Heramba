@@ -10,10 +10,7 @@ import {
   RefreshCw,
   Sun,
   Coffee,
-  Moon,
-  Activity,
-  Layers,
-  Sparkles
+  Moon
 } from 'lucide-react';
 
 export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpenTrial }) => {
@@ -25,7 +22,7 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
 
   const handleFleetSync = () => {
     setFleetSyncing(true);
-    setTimeout(() => setFleetSyncing(false), 900);
+    setTimeout(() => setFleetSyncing(false), 800);
   };
 
   const daypartingData = {
@@ -108,13 +105,12 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
     <section style={{
       backgroundColor: '#0A0A0A',
       color: '#FFFFFF',
-      padding: '110px 0',
+      padding: '90px 0',
       borderTop: '1px solid #1A1A1A',
       borderBottom: '1px solid #1A1A1A',
-      position: 'relative',
-      overflow: 'hidden'
+      position: 'relative'
     }}>
-      <div className="container" style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 24px', position: 'relative', zIndex: 1 }}>
+      <div className="container" style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 24px' }}>
         
         {/* Section Header */}
         <div style={{
@@ -122,30 +118,26 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
           flexDirection: 'column',
           alignItems: 'center',
           textAlign: 'center',
-          marginBottom: '54px'
+          marginBottom: '48px'
         }}>
           <p style={{
             fontSize: '11px',
             fontWeight: 700,
-            letterSpacing: '0.16em',
+            letterSpacing: '0.14em',
             textTransform: 'uppercase',
             color: '#FFE600',
-            marginBottom: '14px',
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '6px'
+            marginBottom: '12px'
           }}>
-            <Activity size={13} color="#FFE600" />
             Architecture & Reliability
           </p>
 
           <h2 style={{
-            fontSize: 'clamp(28px, 4vw, 44px)',
+            fontSize: 'clamp(28px, 4vw, 42px)',
             fontWeight: 800,
             color: '#FFFFFF',
-            letterSpacing: '-0.035em',
+            letterSpacing: '-0.03em',
             lineHeight: 1.15,
-            marginBottom: '16px',
+            marginBottom: '14px',
             maxWidth: '780px'
           }}>
             Zero-Failure Display Architecture.{' '}
@@ -157,18 +149,18 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
             color: '#888888',
             lineHeight: 1.6,
             margin: 0,
-            maxWidth: '620px'
+            maxWidth: '600px'
           }}>
             No frozen screens, manual USB sticks, or lost revenue. Inspect how Heramba handles real-world signage environments.
           </p>
         </div>
 
-        {/* 3 Pillar Tabs with Interactive Lift & Glow */}
+        {/* 3 Pillar Tabs */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '14px',
-          marginBottom: '28px'
+          gap: '12px',
+          marginBottom: '24px'
         }} id="pillar-tabs">
           {pillars.map((tab) => {
             const isSelected = activePillar === tab.id;
@@ -180,50 +172,44 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '14px',
-                  padding: '18px 22px',
-                  borderRadius: '10px',
+                  gap: '12px',
+                  padding: '16px 20px',
+                  borderRadius: '6px',
                   backgroundColor: isSelected ? '#141414' : '#0D0D0D',
                   border: isSelected ? '1px solid #FFE600' : '1px solid #1F1F1F',
-                  boxShadow: isSelected 
-                    ? '0 8px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 230, 0, 0.12)' 
-                    : 'none',
                   color: '#FFFFFF',
                   cursor: 'pointer',
                   textAlign: 'left',
-                  transition: 'all 0.22s cubic-bezier(0.16, 1, 0.3, 1)',
-                  position: 'relative'
+                  transition: 'background-color 0.15s ease, border-color 0.15s ease'
                 }}
               >
                 <div style={{
                   color: isSelected ? '#000000' : '#888888',
                   backgroundColor: isSelected ? '#FFE600' : '#1A1A1A',
-                  width: '36px',
-                  height: '36px',
-                  borderRadius: '8px',
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '4px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   flexShrink: 0,
-                  transition: 'all 0.22s ease',
-                  boxShadow: isSelected ? '0 0 12px rgba(255, 230, 0, 0.35)' : 'none'
+                  transition: 'background-color 0.15s ease, color 0.15s ease'
                 }}>
                   {tab.icon}
                 </div>
                 <div>
                   <div style={{
-                    fontSize: '14px',
+                    fontSize: '13.5px',
                     fontWeight: 700,
                     color: isSelected ? '#FFE600' : '#D4D4D4',
-                    lineHeight: 1.25,
-                    transition: 'color 0.2s ease'
+                    lineHeight: 1.25
                   }}>
                     {tab.title}
                   </div>
                   <div style={{
                     fontSize: '12px',
-                    color: isSelected ? '#999999' : '#666666',
-                    marginTop: '3px',
+                    color: isSelected ? '#AAAAAA' : '#666666',
+                    marginTop: '2px',
                     lineHeight: 1.3
                   }}>
                     {tab.desc}
@@ -234,13 +220,12 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
           })}
         </div>
 
-        {/* Interactive Showcase Box with Tab Fade In Animation */}
+        {/* Interactive Showcase Box */}
         <div style={{
           backgroundColor: '#111111',
           border: '1px solid #222222',
-          borderRadius: '14px',
-          padding: '38px',
-          boxShadow: '0 24px 60px rgba(0, 0, 0, 0.5)'
+          borderRadius: '8px',
+          padding: '36px'
         }}>
 
           {/* PILLAR 1: AUTOMATED DAYPARTING */}
@@ -282,8 +267,8 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                   Set rules once. Screens automatically switch playlists based on time of day, customer demographics, or POS stock levels.
                 </p>
 
-                {/* Time Selectors with Hover Lift */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '28px' }}>
+                {/* Time Selectors */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '26px' }}>
                   {[
                     { id: 'morning', label: 'Morning Commute', time: '08:00 AM', icon: <Sun size={14} /> },
                     { id: 'afternoon', label: 'Midday Lunch', time: '01:00 PM', icon: <Coffee size={14} /> },
@@ -299,15 +284,15 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'space-between',
-                          padding: '13px 18px',
-                          borderRadius: '8px',
-                          backgroundColor: isSlot ? 'rgba(255, 230, 0, 0.09)' : '#161616',
+                          padding: '12px 16px',
+                          borderRadius: '6px',
+                          backgroundColor: isSlot ? 'rgba(255, 230, 0, 0.08)' : '#161616',
                           color: isSlot ? '#FFE600' : '#888888',
                           border: isSlot ? '1px solid #FFE600' : '1px solid #242424',
                           fontWeight: 600,
                           fontSize: '13px',
                           cursor: 'pointer',
-                          transition: 'all 0.18s cubic-bezier(0.16, 1, 0.3, 1)'
+                          transition: 'border-color 0.15s ease, color 0.15s ease'
                         }}
                       >
                         <span style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -341,7 +326,7 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '8px',
-                    transition: 'all 0.18s ease'
+                    transition: 'background-color 0.15s ease'
                   }}
                 >
                   Create Schedule
@@ -349,13 +334,12 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                 </button>
               </div>
 
-              {/* Minimal Dark Display Preview with Glass Reflection */}
-              <div className="preview-display-frame" style={{
+              {/* Minimal Dark Display Preview */}
+              <div style={{
                 backgroundColor: '#0A0A0A',
-                borderRadius: '10px',
-                border: '1px solid #262626',
-                overflow: 'hidden',
-                transition: 'all 0.25s ease'
+                borderRadius: '6px',
+                border: '1px solid #242424',
+                overflow: 'hidden'
               }}>
                 <div style={{
                   padding: '12px 18px',
@@ -367,13 +351,13 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                   color: '#666666'
                 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span className="pulse-dot" style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#FFE600' }} />
+                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#FFE600' }} />
                     <span style={{ color: '#AAAAAA', fontWeight: 600 }}>LIVE BROADCAST</span>
                   </div>
                   <span style={{ color: '#FFE600', fontWeight: 700 }}>{daypartingData[timeSlot].time}</span>
                 </div>
 
-                <div style={{ padding: '38px 30px', textAlign: 'center' }}>
+                <div style={{ padding: '36px 28px', textAlign: 'center' }}>
                   <span style={{
                     fontSize: '11px',
                     color: '#888888',
@@ -386,31 +370,30 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                   </span>
 
                   <h4 style={{
-                    fontSize: '24px',
+                    fontSize: '22px',
                     fontWeight: 800,
                     color: '#FFFFFF',
-                    marginBottom: '18px',
+                    marginBottom: '16px',
                     lineHeight: 1.2
                   }}>
                     {daypartingData[timeSlot].title}
                   </h4>
 
-                  <div className="hover-elevation" style={{
+                  <div style={{
                     backgroundColor: '#141414',
                     border: '1px solid #242424',
-                    borderRadius: '8px',
-                    padding: '16px 22px',
-                    margin: '0 auto 24px auto',
-                    maxWidth: '380px',
+                    borderRadius: '6px',
+                    padding: '14px 20px',
+                    margin: '0 auto 20px auto',
+                    maxWidth: '360px',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'space-between',
-                    transition: 'all 0.2s ease'
+                    justifyContent: 'space-between'
                   }}>
                     <span style={{ fontSize: '13px', color: '#CCCCCC', fontWeight: 500 }}>
                       {daypartingData[timeSlot].subtitle}
                     </span>
-                    <span style={{ fontSize: '16px', color: '#FFE600', fontWeight: 800 }}>
+                    <span style={{ fontSize: '15px', color: '#FFE600', fontWeight: 800 }}>
                       {daypartingData[timeSlot].price}
                     </span>
                   </div>
@@ -421,7 +404,7 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    gap: '18px'
+                    gap: '16px'
                   }}>
                     <span>POS Synchronized</span>
                     <span>•</span>
@@ -477,23 +460,23 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                 <div style={{
                   backgroundColor: '#161616',
                   border: '1px solid #242424',
-                  borderRadius: '8px',
-                  padding: '18px',
-                  marginBottom: '20px'
+                  borderRadius: '6px',
+                  padding: '16px',
+                  marginBottom: '18px'
                 }}>
-                  <div style={{ fontSize: '12px', color: '#888888', marginBottom: '12px', fontWeight: 600 }}>
+                  <div style={{ fontSize: '12px', color: '#888888', marginBottom: '10px', fontWeight: 600 }}>
                     Simulate Network State:
                   </div>
-                  <div style={{ display: 'flex', gap: '10px' }}>
+                  <div style={{ display: 'flex', gap: '8px' }}>
                     <button
                       onClick={() => setInternetOnline(true)}
                       className="network-toggle-btn"
                       style={{
                         flex: 1,
-                        padding: '11px',
-                        borderRadius: '6px',
+                        padding: '10px',
+                        borderRadius: '4px',
                         border: internetOnline ? '1px solid #FFE600' : '1px solid #242424',
-                        backgroundColor: internetOnline ? 'rgba(255, 230, 0, 0.09)' : '#0E0E0E',
+                        backgroundColor: internetOnline ? 'rgba(255, 230, 0, 0.08)' : '#0E0E0E',
                         color: internetOnline ? '#FFE600' : '#666666',
                         fontWeight: 700,
                         fontSize: '12px',
@@ -501,8 +484,8 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        gap: '8px',
-                        transition: 'all 0.18s ease'
+                        gap: '6px',
+                        transition: 'border-color 0.15s ease, color 0.15s ease'
                       }}
                     >
                       <Wifi size={14} />
@@ -513,10 +496,10 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                       className="network-toggle-btn"
                       style={{
                         flex: 1,
-                        padding: '11px',
-                        borderRadius: '6px',
+                        padding: '10px',
+                        borderRadius: '4px',
                         border: !internetOnline ? '1px solid #FFE600' : '1px solid #242424',
-                        backgroundColor: !internetOnline ? 'rgba(255, 230, 0, 0.09)' : '#0E0E0E',
+                        backgroundColor: !internetOnline ? 'rgba(255, 230, 0, 0.08)' : '#0E0E0E',
                         color: !internetOnline ? '#FFE600' : '#666666',
                         fontWeight: 700,
                         fontSize: '12px',
@@ -524,8 +507,8 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        gap: '8px',
-                        transition: 'all 0.18s ease'
+                        gap: '6px',
+                        transition: 'border-color 0.15s ease, color 0.15s ease'
                       }}
                     >
                       <WifiOff size={14} />
@@ -539,13 +522,12 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                 </p>
               </div>
 
-              {/* Diagnostic Box with Interactive Hover on Stats */}
-              <div className="preview-display-frame" style={{
+              {/* Diagnostic Box */}
+              <div style={{
                 backgroundColor: '#0A0A0A',
-                borderRadius: '10px',
-                border: '1px solid #262626',
-                overflow: 'hidden',
-                transition: 'all 0.25s ease'
+                borderRadius: '6px',
+                border: '1px solid #242424',
+                overflow: 'hidden'
               }}>
                 <div style={{
                   padding: '12px 18px',
@@ -557,11 +539,11 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                   color: '#666666'
                 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span className="pulse-dot" style={{
+                    <span style={{
                       width: '6px',
                       height: '6px',
                       borderRadius: '50%',
-                      backgroundColor: internetOnline ? '#FFE600' : '#888888'
+                      backgroundColor: internetOnline ? '#FFE600' : '#666666'
                     }} />
                     <span style={{ color: '#AAAAAA', fontWeight: 600 }}>PLAYER WATCHDOG</span>
                   </div>
@@ -570,22 +552,21 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                   </span>
                 </div>
 
-                <div style={{ padding: '34px 28px' }}>
-                  <div className="hover-elevation" style={{
+                <div style={{ padding: '30px 24px' }}>
+                  <div style={{
                     display: 'flex',
                     alignItems: 'center',
                     gap: '14px',
-                    padding: '16px',
+                    padding: '14px 16px',
                     backgroundColor: '#141414',
                     border: '1px solid #242424',
-                    borderRadius: '8px',
-                    marginBottom: '20px',
-                    transition: 'all 0.2s ease'
+                    borderRadius: '6px',
+                    marginBottom: '18px'
                   }}>
                     <div style={{
-                      width: '38px',
-                      height: '38px',
-                      borderRadius: '6px',
+                      width: '36px',
+                      height: '36px',
+                      borderRadius: '4px',
                       backgroundColor: '#FFE600',
                       color: '#000000',
                       display: 'flex',
@@ -596,7 +577,7 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                       {internetOnline ? <Wifi size={18} /> : <ShieldCheck size={18} />}
                     </div>
                     <div>
-                      <div style={{ fontSize: '14px', fontWeight: 700, color: '#FFFFFF' }}>
+                      <div style={{ fontSize: '13.5px', fontWeight: 700, color: '#FFFFFF' }}>
                         {internetOnline ? 'Real-Time Sync Active' : 'Offline Fail-Safe Engaged'}
                       </div>
                       <div style={{ fontSize: '12px', color: '#777777', marginTop: '2px' }}>
@@ -607,19 +588,19 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                     </div>
                   </div>
 
-                  {/* 3 Interactive Metric Cards */}
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', textAlign: 'center' }}>
+                  {/* 3 Metric Cards */}
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', textAlign: 'center' }}>
                     <div className="metric-chip">
                       <div style={{ fontSize: '11px', color: '#666666' }}>Framerate</div>
-                      <div className="metric-val" style={{ fontSize: '16px', fontWeight: 800, color: '#FFE600', marginTop: '4px' }}>60 FPS</div>
+                      <div style={{ fontSize: '15px', fontWeight: 800, color: '#FFE600', marginTop: '4px' }}>60 FPS</div>
                     </div>
                     <div className="metric-chip">
                       <div style={{ fontSize: '11px', color: '#666666' }}>Local Cache</div>
-                      <div className="metric-val" style={{ fontSize: '16px', fontWeight: 800, color: '#FFFFFF', marginTop: '4px' }}>100% Ready</div>
+                      <div style={{ fontSize: '15px', fontWeight: 800, color: '#FFFFFF', marginTop: '4px' }}>100% Ready</div>
                     </div>
                     <div className="metric-chip">
                       <div style={{ fontSize: '11px', color: '#666666' }}>Blackout Risk</div>
-                      <div className="metric-val" style={{ fontSize: '16px', fontWeight: 800, color: '#FFE600', marginTop: '4px' }}>0.00%</div>
+                      <div style={{ fontSize: '15px', fontWeight: 800, color: '#FFE600', marginTop: '4px' }}>0.00%</div>
                     </div>
                   </div>
                 </div>
@@ -681,15 +662,15 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                         onClick={() => setSelectedCity(city.id as any)}
                         className="slot-toggle-btn"
                         style={{
-                          padding: '11px 14px',
+                          padding: '10px 12px',
                           borderRadius: '6px',
-                          backgroundColor: isCity ? 'rgba(255, 230, 0, 0.09)' : '#161616',
+                          backgroundColor: isCity ? 'rgba(255, 230, 0, 0.08)' : '#161616',
                           color: isCity ? '#FFE600' : '#888888',
                           border: isCity ? '1px solid #FFE600' : '1px solid #242424',
                           fontWeight: 600,
                           fontSize: '12.5px',
                           cursor: 'pointer',
-                          transition: 'all 0.18s ease',
+                          transition: 'border-color 0.15s ease, color 0.15s ease',
                           textAlign: 'left'
                         }}
                       >
@@ -709,12 +690,12 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                     borderRadius: '6px',
                     fontSize: '12.5px',
                     fontWeight: 700,
-                    padding: '10px 18px',
+                    padding: '9px 16px',
                     cursor: 'pointer',
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '8px',
-                    transition: 'all 0.18s ease'
+                    transition: 'background-color 0.15s ease'
                   }}
                 >
                   <RefreshCw size={13} className={fleetSyncing ? 'rotate-anim' : ''} />
@@ -723,12 +704,11 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
               </div>
 
               {/* Fleet Display Box */}
-              <div className="preview-display-frame" style={{
+              <div style={{
                 backgroundColor: '#0A0A0A',
-                borderRadius: '10px',
-                border: '1px solid #262626',
-                overflow: 'hidden',
-                transition: 'all 0.25s ease'
+                borderRadius: '6px',
+                border: '1px solid #242424',
+                overflow: 'hidden'
               }}>
                 <div style={{
                   padding: '12px 18px',
@@ -740,7 +720,7 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                   color: '#666666'
                 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span className="pulse-dot" style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#FFE600' }} />
+                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#FFE600' }} />
                     <span style={{ color: '#AAAAAA', fontWeight: 600 }}>CLUSTER // {selectedCity.toUpperCase()}</span>
                   </div>
                   <span style={{ color: '#FFE600', fontWeight: 700 }}>
@@ -748,15 +728,15 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                   </span>
                 </div>
 
-                <div style={{ padding: '30px' }}>
-                  <div style={{ fontSize: '16px', fontWeight: 700, color: '#FFFFFF', marginBottom: '4px' }}>
+                <div style={{ padding: '26px' }}>
+                  <div style={{ fontSize: '15px', fontWeight: 700, color: '#FFFFFF', marginBottom: '4px' }}>
                     {fleetData[selectedCity].location}
                   </div>
-                  <div style={{ fontSize: '12px', color: '#FFE600', fontWeight: 600, marginBottom: '20px' }}>
+                  <div style={{ fontSize: '12px', color: '#FFE600', fontWeight: 600, marginBottom: '18px' }}>
                     {fleetData[selectedCity].resolution}
                   </div>
 
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '16px' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '16px' }}>
                     <div className="metric-chip">
                       <div style={{ fontSize: '11px', color: '#666666' }}>Active Content</div>
                       <div style={{ fontSize: '13px', fontWeight: 600, color: '#CCCCCC', marginTop: '3px' }}>
@@ -772,8 +752,8 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                   </div>
 
                   <div style={{
-                    padding: '11px 16px',
-                    borderRadius: '6px',
+                    padding: '10px 14px',
+                    borderRadius: '4px',
                     background: '#141414',
                     border: '1px solid #222222',
                     fontSize: '11px',
@@ -794,17 +774,16 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
 
       </div>
 
-      {/* Embedded CSS Animations & Interactive Hovering States */}
       <style>{`
-        /* Tab Fade In Animation */
+        /* Minimal Tab Fade In */
         .tab-pane-fade {
-          animation: tabFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+          animation: tabFadeIn 0.2s ease both;
         }
 
         @keyframes tabFadeIn {
           from {
             opacity: 0;
-            transform: translateY(10px);
+            transform: translateY(6px);
           }
           to {
             opacity: 1;
@@ -812,27 +791,9 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
           }
         }
 
-        /* Pulsing dot */
-        .pulse-dot {
-          animation: pulseDot 2s infinite ease-in-out;
-        }
-
-        @keyframes pulseDot {
-          0%, 100% {
-            opacity: 1;
-            transform: scale(1);
-            box-shadow: 0 0 6px #FFE600;
-          }
-          50% {
-            opacity: 0.4;
-            transform: scale(0.85);
-            box-shadow: none;
-          }
-        }
-
         /* Rotating sync icon */
         .rotate-anim {
-          animation: spinSync 0.9s linear infinite;
+          animation: spinSync 0.8s linear infinite;
         }
 
         @keyframes spinSync {
@@ -840,60 +801,39 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
           to { transform: rotate(360deg); }
         }
 
-        /* Tab button hover effects */
+        /* Clean plain color hover */
         .showcase-tab-btn:hover:not(.selected) {
-          border-color: #383838 !important;
+          border-color: #333333 !important;
           background-color: #121212 !important;
-          transform: translateY(-2px);
         }
 
-        /* Interactive toggle buttons */
         .slot-toggle-btn:hover {
           border-color: #FFE600 !important;
-          transform: translateY(-2px);
-          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+          color: #FFFFFF !important;
         }
 
         .network-toggle-btn:hover {
           border-color: #FFE600 !important;
-          transform: translateY(-1px);
         }
 
-        /* Metric chip hover effects */
         .metric-chip {
           background: #141414;
           padding: 12px;
-          border-radius: 8px;
+          border-radius: 6px;
           border: 1px solid #222222;
-          transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+          transition: border-color 0.15s ease;
         }
 
         .metric-chip:hover {
-          border-color: rgba(255, 230, 0, 0.45);
-          background-color: #181818;
-          transform: translateY(-3px);
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 230, 0, 0.08);
-        }
-
-        .preview-display-frame:hover {
-          border-color: #333333 !important;
-          box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 230, 0, 0.05);
-        }
-
-        .hover-elevation:hover {
-          border-color: rgba(255, 230, 0, 0.35) !important;
-          transform: translateY(-2px);
+          border-color: #FFE600;
         }
 
         .cta-action-btn:hover {
           background-color: #F5DC00 !important;
-          transform: translateY(-2px);
-          box-shadow: 0 8px 24px rgba(255, 230, 0, 0.25);
         }
 
         .cta-secondary-btn:hover {
-          background-color: rgba(255, 230, 0, 0.1) !important;
-          transform: translateY(-2px);
+          background-color: rgba(255, 230, 0, 0.08) !important;
         }
 
         @media (max-width: 960px) {
