@@ -6,24 +6,17 @@ import {
   WifiOff, 
   Globe2, 
   ArrowRight, 
-  Sparkles, 
   ShieldCheck, 
   RefreshCw,
-  Coffee,
   Sun,
+  Coffee,
   Moon
 } from 'lucide-react';
 
 export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpenTrial }) => {
   const [activePillar, setActivePillar] = useState<'schedule' | 'offline' | 'fleet'>('schedule');
-  
-  // Dayparting states
   const [timeSlot, setTimeSlot] = useState<'morning' | 'afternoon' | 'evening'>('morning');
-  
-  // Offline simulation state
   const [internetOnline, setInternetOnline] = useState<boolean>(true);
-  
-  // Fleet selection state
   const [selectedCity, setSelectedCity] = useState<'mumbai' | 'toronto' | 'bengaluru' | 'dubai'>('mumbai');
   const [fleetSyncing, setFleetSyncing] = useState<boolean>(false);
 
@@ -36,26 +29,23 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
     morning: {
       time: '08:00 AM – 11:30 AM',
       title: 'Artisan Breakfast & Cold Brews',
-      tag: 'Morning Rush Automation',
-      highlight: 'Cold Brew Combo + Croissant ₹249',
-      footfall: 'Peak Commute Transit',
-      conversion: '+42% Breakfast Take-rate'
+      subtitle: 'Cold Brew Combo + Croissant',
+      price: '₹249',
+      schedule: 'Morning Peak Commute'
     },
     afternoon: {
       time: '12:00 PM – 03:30 PM',
       title: 'Power Lunch Bowls & Express Meals',
-      tag: 'Midday High-Margin Rotation',
-      highlight: 'Farm Fresh Quinoa Bowl + Berry Fizz ₹420',
-      footfall: 'Corporate Lunch Gathering',
-      conversion: '+35% Basket Size'
+      subtitle: 'Quinoa Bowl + Berry Sparkler',
+      price: '₹420',
+      schedule: 'Corporate Midday Rotation'
     },
     evening: {
       time: '06:00 PM – 11:00 PM',
       title: 'Evening Specials & Dinner Delights',
-      tag: 'Dine-In Merchandising',
-      highlight: 'Woodfired Truffle Pizza & Dessert ₹650',
-      footfall: 'Leisure & Family Footfall',
-      conversion: '+48% Premium Upsell'
+      subtitle: 'Woodfired Pizza & Crafted Dessert',
+      price: '₹650',
+      schedule: 'Leisure & Footfall Prime'
     }
   };
 
@@ -63,130 +53,116 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
     mumbai: {
       location: 'BKC Financial Arterial Flagship',
       screens: '48 Active Displays',
-      status: 'ONLINE • 60 FPS',
+      resolution: '4K UHD • 60 FPS',
       storage: '4.2 GB / 32 GB Cached',
-      activeAd: 'Spring Apparel 4K Reel',
-      temp: '22°C Operating Norm'
+      activeContent: 'Spring Apparel 4K Reel'
     },
     toronto: {
       location: 'Queensway Medical & Diagnostic Clinic',
       screens: '18 Active Displays',
-      status: 'ONLINE • 60 FPS',
+      resolution: '4K UHD • 60 FPS',
       storage: '2.8 GB / 32 GB Cached',
-      activeAd: 'OPD Queue #106 + Wellness Tips',
-      temp: '20°C Operating Norm'
+      activeContent: 'OPD Queue Stream + Wellness'
     },
     bengaluru: {
       location: 'Indiranagar Premium Lifestyle Retail',
       screens: '32 Active Displays',
-      status: 'ONLINE • 60 FPS',
+      resolution: '4K UHD • 60 FPS',
       storage: '5.1 GB / 32 GB Cached',
-      activeAd: 'Luxury Watches 2026 Showcase',
-      temp: '23°C Operating Norm'
+      activeContent: 'Luxury Watches Showcase'
     },
     dubai: {
       location: 'Downtown Concourse Mega Wall',
       screens: '14 Active Displays',
-      status: 'ONLINE • 60 FPS',
+      resolution: '8K Video Wall • 60 FPS',
       storage: '6.4 GB / 64 GB Cached',
-      activeAd: 'Automotive Electric Hypercar Reel',
-      temp: '21°C Climate Regulated'
+      activeContent: 'Electric Mobility Cinematic'
     }
   };
 
+  const pillars = [
+    {
+      id: 'schedule',
+      title: 'Dayparting Automation',
+      desc: 'Content rotates dynamically by time & traffic',
+      icon: <Clock size={16} />
+    },
+    {
+      id: 'offline',
+      title: 'Edge Fail-Safe Caching',
+      desc: 'Zero downtime if local Wi-Fi drops',
+      icon: <WifiOff size={16} />
+    },
+    {
+      id: 'fleet',
+      title: 'Fleet Orchestration',
+      desc: 'Unified control across 1 to 5,000+ displays',
+      icon: <Globe2 size={16} />
+    }
+  ] as const;
+
   return (
     <section style={{
-      backgroundColor: '#FFFFFF',
-      padding: '100px 0',
-      borderBottom: '1px solid #E2E5EA',
+      backgroundColor: '#0A0A0A',
+      color: '#FFFFFF',
+      padding: '110px 0',
+      borderTop: '1px solid #1A1A1A',
+      borderBottom: '1px solid #1A1A1A',
       position: 'relative'
     }}>
-      <div className="container">
+      <div className="container" style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 24px' }}>
         
-        {/* Editorial Section Introduction: Asymmetric Split */}
+        {/* Section Header */}
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1.2fr 0.8fr',
-          gap: '40px',
-          alignItems: 'flex-end',
-          marginBottom: '50px'
-        }} id="showcase-header">
-          <div>
-            <h2 style={{
-              fontSize: 'clamp(32px, 4.4vw, 46px)',
-              fontWeight: 800,
-              color: '#191D24',
-              letterSpacing: '-0.035em',
-              lineHeight: 1.15,
-              marginBottom: '16px'
-            }}>
-              Engineered for Autonomous, Zero-Failure Screen Operation
-            </h2>
-            <p style={{
-              fontSize: '17px',
-              color: '#4A5260',
-              lineHeight: 1.6,
-              margin: 0,
-              maxWidth: '680px'
-            }}>
-              Move beyond static digital posters. Heramba automates dynamic dayparting schedules, guarantees offline video playback during network dropouts, and enables instant centralized control across 1 or 5,000+ screens.
-            </p>
-          </div>
-
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-            gap: '12px'
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          textAlign: 'center',
+          marginBottom: '56px'
+        }}>
+          <p style={{
+            fontSize: '11px',
+            fontWeight: 700,
+            letterSpacing: '0.16em',
+            textTransform: 'uppercase',
+            color: '#FFE600',
+            marginBottom: '14px'
           }}>
-            <div style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              backgroundColor: '#F8F9FA',
-              border: '1px solid #E2E5EA',
-              padding: '6px 14px',
-              borderRadius: '9999px',
-              fontSize: '12px',
-              fontWeight: 700,
-              color: '#2B3445'
-            }}>
-              <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#10B981' }} />
-              Live Interactive Architecture Demo
-            </div>
-            <p style={{ fontSize: '13.5px', color: '#717B8C', margin: 0 }}>
-              Select a core architectural pillar below to inspect how Heramba behaves in production environments.
-            </p>
-          </div>
+            Architecture & Reliability
+          </p>
+
+          <h2 style={{
+            fontSize: 'clamp(28px, 4vw, 44px)',
+            fontWeight: 800,
+            color: '#FFFFFF',
+            letterSpacing: '-0.035em',
+            lineHeight: 1.15,
+            marginBottom: '16px',
+            maxWidth: '780px'
+          }}>
+            Zero-Failure Display Architecture.{' '}
+            <span style={{ color: '#FFE600' }}>Built for Scale.</span>
+          </h2>
+
+          <p style={{
+            fontSize: '15px',
+            color: '#888888',
+            lineHeight: 1.6,
+            margin: 0,
+            maxWidth: '620px'
+          }}>
+            No frozen screens, manual USB sticks, or lost revenue. Inspect how Heramba handles real-world signage environments.
+          </p>
         </div>
 
-        {/* 3 Core Architecture Selector Tabs */}
+        {/* 3 Minimal Pillar Tabs */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
           gap: '12px',
-          marginBottom: '24px'
+          marginBottom: '28px'
         }} id="pillar-tabs">
-          {[
-            {
-              id: 'schedule',
-              title: 'Automated Dayparting Engine',
-              subtitle: 'Dynamic content switching by time & footfall',
-              icon: <Clock size={18} />
-            },
-            {
-              id: 'offline',
-              title: 'Edge Caching & Fail-Safe Core',
-              subtitle: 'Zero downtime when venue internet drops',
-              icon: <WifiOff size={18} />
-            },
-            {
-              id: 'fleet',
-              title: 'Centralized Multi-Location Fleet',
-              subtitle: 'Control 1 to 5,000+ displays in real time',
-              icon: <Globe2 size={18} />
-            }
-          ].map((tab) => {
+          {pillars.map((tab) => {
             const isSelected = activePillar === tab.id;
             return (
               <button
@@ -194,48 +170,48 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                 onClick={() => setActivePillar(tab.id as any)}
                 style={{
                   display: 'flex',
-                  alignItems: 'flex-start',
-                  gap: '14px',
-                  padding: '18px 20px',
-                  borderRadius: '12px',
-                  backgroundColor: isSelected ? '#FFFFFF' : '#F8F9FA',
-                  border: isSelected ? '2px solid #FFE600' : '1px solid #E2E5EA',
-                  boxShadow: isSelected ? '0 10px 25px -4px rgba(255, 119, 42, 0.15)' : 'none',
+                  alignItems: 'center',
+                  gap: '12px',
+                  padding: '16px 20px',
+                  borderRadius: '8px',
+                  backgroundColor: isSelected ? '#141414' : '#0E0E0E',
+                  border: isSelected ? '1px solid #FFE600' : '1px solid #202020',
+                  color: '#FFFFFF',
                   cursor: 'pointer',
                   textAlign: 'left',
-                  transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)'
+                  transition: 'all 0.18s ease'
                 }}
               >
                 <div style={{
-                  width: '38px',
-                  height: '38px',
-                  borderRadius: '8px',
-                  backgroundColor: isSelected ? '#FFF5EE' : '#FFFFFF',
-                  border: `1px solid ${isSelected ? 'rgba(255, 119, 42, 0.3)' : '#E2E5EA'}`,
-                  color: isSelected ? '#FFE600' : '#2B3445',
+                  color: isSelected ? '#000000' : '#888888',
+                  backgroundColor: isSelected ? '#FFE600' : '#1A1A1A',
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '6px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  flexShrink: 0
+                  flexShrink: 0,
+                  transition: 'all 0.18s ease'
                 }}>
                   {tab.icon}
                 </div>
                 <div>
                   <div style={{
-                    fontSize: '15px',
-                    fontWeight: 800,
-                    color: isSelected ? '#191D24' : '#4A5260',
-                    lineHeight: 1.25,
-                    marginBottom: '4px'
+                    fontSize: '14px',
+                    fontWeight: 700,
+                    color: isSelected ? '#FFE600' : '#E0E0E0',
+                    lineHeight: 1.2
                   }}>
                     {tab.title}
                   </div>
                   <div style={{
                     fontSize: '12px',
-                    color: '#717B8C',
-                    lineHeight: 1.4
+                    color: '#707070',
+                    marginTop: '3px',
+                    lineHeight: 1.3
                   }}>
-                    {tab.subtitle}
+                    {tab.desc}
                   </div>
                 </div>
               </button>
@@ -243,55 +219,59 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
           })}
         </div>
 
-        {/* ── Interactive Stage Showcase Canvas ── */}
+        {/* Interactive Showcase Box */}
         <div style={{
-          backgroundColor: '#F8F9FA',
-          border: '1px solid #E2E5EA',
-          borderRadius: '16px',
+          backgroundColor: '#111111',
+          border: '1px solid #222222',
+          borderRadius: '12px',
           padding: '36px',
-          boxShadow: '0 12px 36px -6px rgba(43, 52, 69, 0.05)'
         }}>
 
           {/* PILLAR 1: AUTOMATED DAYPARTING */}
           {activePillar === 'schedule' && (
             <div style={{
               display: 'grid',
-              gridTemplateColumns: '1fr 1.25fr',
+              gridTemplateColumns: '1fr 1.2fr',
               gap: '40px',
               alignItems: 'center'
             }} id="showcase-subgrid">
               <div>
-                <div style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  backgroundColor: '#FFF5EE',
-                  color: '#FFE600',
-                  border: '1px solid rgba(255, 119, 42, 0.25)',
-                  padding: '4px 12px',
-                  borderRadius: '9999px',
+                <p style={{
                   fontSize: '11px',
                   fontWeight: 700,
-                  marginBottom: '14px'
+                  color: '#FFE600',
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  marginBottom: '10px'
                 }}>
-                  <Sparkles size={12} />
-                  DAYPARTING AUTOMATION
-                </div>
-
-                <h3 style={{ fontSize: '24px', fontWeight: 800, color: '#191D24', marginBottom: '10px', lineHeight: 1.25 }}>
-                  Screens Adapt to Customer Habits by Time-of-Day
-                </h3>
-
-                <p style={{ fontSize: '14.5px', color: '#4A5260', lineHeight: 1.6, marginBottom: '24px' }}>
-                  Eliminate manual USB drive updates or cashier menu adjustments. Heramba automatically shifts promotional slides, price tiers, and inventory stock in real time according to scheduled rules.
+                  Time-Based Scheduling
                 </p>
 
-                {/* Interactive Time Selector Buttons */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '24px' }}>
+                <h3 style={{
+                  fontSize: '22px',
+                  fontWeight: 800,
+                  color: '#FFFFFF',
+                  marginBottom: '12px',
+                  lineHeight: 1.3
+                }}>
+                  Menus and promotions shift on schedule, automatically.
+                </h3>
+
+                <p style={{
+                  fontSize: '14px',
+                  color: '#888888',
+                  lineHeight: 1.6,
+                  marginBottom: '24px'
+                }}>
+                  Set rules once. Screens automatically switch playlists based on time of day, customer demographics, or POS stock levels.
+                </p>
+
+                {/* Time Selectors */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '28px' }}>
                   {[
-                    { id: 'morning', label: '08:00 AM — Morning Commute', icon: <Sun size={15} /> },
-                    { id: 'afternoon', label: '01:00 PM — Lunch & Midday', icon: <Coffee size={15} /> },
-                    { id: 'evening', label: '07:00 PM — Evening Leisure', icon: <Moon size={15} /> }
+                    { id: 'morning', label: 'Morning Commute', time: '08:00 AM', icon: <Sun size={14} /> },
+                    { id: 'afternoon', label: 'Midday Lunch', time: '01:00 PM', icon: <Coffee size={14} /> },
+                    { id: 'evening', label: 'Evening Prime', time: '07:00 PM', icon: <Moon size={14} /> }
                   ].map((slot) => {
                     const isSlot = timeSlot === slot.id;
                     return (
@@ -303,22 +283,26 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                           alignItems: 'center',
                           justifyContent: 'space-between',
                           padding: '12px 16px',
-                          borderRadius: '8px',
-                          backgroundColor: isSlot ? '#FFE600' : '#FFFFFF',
-                          color: isSlot ? '#FFFFFF' : '#2B3445',
-                          border: isSlot ? '1px solid #FFE600' : '1px solid #E2E5EA',
-                          fontWeight: 700,
-                          fontSize: '13.5px',
+                          borderRadius: '6px',
+                          backgroundColor: isSlot ? 'rgba(255, 230, 0, 0.08)' : '#161616',
+                          color: isSlot ? '#FFE600' : '#999999',
+                          border: isSlot ? '1px solid #FFE600' : '1px solid #242424',
+                          fontWeight: 600,
+                          fontSize: '13px',
                           cursor: 'pointer',
                           transition: 'all 0.15s ease'
                         }}
                       >
-                        <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                          {slot.icon}
-                          {slot.label}
+                        <span style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                          <span style={{ color: isSlot ? '#FFE600' : '#666666' }}>{slot.icon}</span>
+                          <span>{slot.label}</span>
                         </span>
-                        <span style={{ fontSize: '11px', opacity: isSlot ? 0.9 : 0.6 }}>
-                          {isSlot ? '● ACTIVE PREVIEW' : 'Click to preview'}
+                        <span style={{
+                          fontSize: '11px',
+                          color: isSlot ? '#FFE600' : '#555555',
+                          fontWeight: 700
+                        }}>
+                          {slot.time}
                         </span>
                       </button>
                     );
@@ -327,87 +311,102 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
 
                 <button
                   onClick={onOpenTrial}
-                  className="btn btn-primary"
-                  style={{ borderRadius: '8px', padding: '11px 22px', fontSize: '13.5px' }}
+                  style={{
+                    backgroundColor: '#FFE600',
+                    color: '#000000',
+                    border: 'none',
+                    borderRadius: '6px',
+                    padding: '10px 20px',
+                    fontSize: '13px',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px'
+                  }}
                 >
-                  <span>Build Dayparting Schedule Free</span>
-                  <ArrowRight size={14} />
+                  Create Schedule
+                  <ArrowRight size={14} strokeWidth={2.5} />
                 </button>
               </div>
 
-              {/* Real Simulation Screen for Dayparting */}
+              {/* Minimal Dark Display Preview */}
               <div style={{
-                backgroundColor: '#FFFFFF',
-                borderRadius: '14px',
-                border: '6px solid #1E2532',
-                boxShadow: '0 20px 50px -10px rgba(43, 52, 69, 0.15)',
-                overflow: 'hidden',
-                position: 'relative'
+                backgroundColor: '#0A0A0A',
+                borderRadius: '8px',
+                border: '1px solid #242424',
+                overflow: 'hidden'
               }}>
                 <div style={{
-                  backgroundColor: '#1E2532',
-                  padding: '8px 16px',
+                  padding: '12px 18px',
+                  borderBottom: '1px solid #1F1F1F',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  color: '#FFFFFF',
                   fontSize: '11px',
-                  fontWeight: 700
+                  color: '#666666'
                 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#10B981' }} />
-                    HERAMBA 4K DISPLAY // LIVE AUTOMATION
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#FFE600' }} />
+                    <span style={{ color: '#AAAAAA', fontWeight: 600 }}>LIVE BROADCAST</span>
                   </div>
-                  <div style={{ color: '#FFE600' }}>
-                    {daypartingData[timeSlot].time}
-                  </div>
+                  <span style={{ color: '#FFE600', fontWeight: 700 }}>{daypartingData[timeSlot].time}</span>
                 </div>
 
-                <div style={{ padding: '32px 28px', textAlign: 'center', background: 'linear-gradient(135deg, #FFFFFF 0%, #FFF9F5 100%)' }}>
+                <div style={{ padding: '36px 30px', textAlign: 'center' }}>
                   <span style={{
-                    display: 'inline-block',
-                    padding: '4px 12px',
-                    borderRadius: '9999px',
-                    backgroundColor: '#FFF2E8',
-                    color: '#FFE600',
                     fontSize: '11px',
-                    fontWeight: 800,
-                    marginBottom: '12px',
-                    border: '1px solid rgba(255, 119, 42, 0.25)'
+                    color: '#888888',
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    display: 'block',
+                    marginBottom: '8px'
                   }}>
-                    {daypartingData[timeSlot].tag}
+                    {daypartingData[timeSlot].schedule}
                   </span>
 
-                  <h4 style={{ fontSize: '26px', fontWeight: 800, color: '#191D24', marginBottom: '10px' }}>
+                  <h4 style={{
+                    fontSize: '24px',
+                    fontWeight: 800,
+                    color: '#FFFFFF',
+                    marginBottom: '16px',
+                    lineHeight: 1.2
+                  }}>
                     {daypartingData[timeSlot].title}
                   </h4>
 
                   <div style={{
-                    backgroundColor: '#FFFFFF',
-                    border: '1px solid #E2E5EA',
-                    borderRadius: '10px',
-                    padding: '16px 20px',
-                    margin: '20px 0',
-                    boxShadow: '0 4px 16px rgba(25, 29, 36, 0.04)',
+                    backgroundColor: '#141414',
+                    border: '1px solid #242424',
+                    borderRadius: '6px',
+                    padding: '14px 20px',
+                    margin: '0 auto 20px auto',
+                    maxWidth: '360px',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'space-between',
-                    gap: '12px'
+                    justifyContent: 'space-between'
                   }}>
-                    <div style={{ textAlign: 'left' }}>
-                      <div style={{ fontSize: '11px', color: '#717B8C', fontWeight: 600 }}>Featured Highlight</div>
-                      <div style={{ fontSize: '15px', fontWeight: 800, color: '#FFE600' }}>{daypartingData[timeSlot].highlight}</div>
-                    </div>
-                    <div style={{ textAlign: 'right' }}>
-                      <div style={{ fontSize: '11px', color: '#717B8C', fontWeight: 600 }}>Measured Lift</div>
-                      <div style={{ fontSize: '15px', fontWeight: 800, color: '#10B981' }}>{daypartingData[timeSlot].conversion}</div>
-                    </div>
+                    <span style={{ fontSize: '13px', color: '#CCCCCC', fontWeight: 500 }}>
+                      {daypartingData[timeSlot].subtitle}
+                    </span>
+                    <span style={{ fontSize: '15px', color: '#FFE600', fontWeight: 800 }}>
+                      {daypartingData[timeSlot].price}
+                    </span>
                   </div>
 
-                  <div style={{ fontSize: '12px', color: '#717B8C', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
-                    <span>● Synced with Cloud POS</span>
-                    <span>● Instant QR Order Enabled</span>
-                    <span>● Dynamic Inventory Auto-Sold-Out</span>
+                  <div style={{
+                    fontSize: '12px',
+                    color: '#555555',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '18px'
+                  }}>
+                    <span>POS Synchronized</span>
+                    <span>•</span>
+                    <span>Dynamic Pricing</span>
+                    <span>•</span>
+                    <span>Zero Lag</span>
                   </div>
                 </div>
               </div>
@@ -418,59 +417,64 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
           {activePillar === 'offline' && (
             <div style={{
               display: 'grid',
-              gridTemplateColumns: '1fr 1.25fr',
+              gridTemplateColumns: '1fr 1.2fr',
               gap: '40px',
               alignItems: 'center'
             }} id="showcase-subgrid">
               <div>
-                <div style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  backgroundColor: '#FFF5EE',
-                  color: '#FFE600',
-                  border: '1px solid rgba(255, 119, 42, 0.25)',
-                  padding: '4px 12px',
-                  borderRadius: '9999px',
+                <p style={{
                   fontSize: '11px',
                   fontWeight: 700,
-                  marginBottom: '14px'
+                  color: '#FFE600',
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  marginBottom: '10px'
                 }}>
-                  <ShieldCheck size={12} />
-                  EDGE FAIL-SAFE CACHING
-                </div>
-
-                <h3 style={{ fontSize: '24px', fontWeight: 800, color: '#191D24', marginBottom: '10px', lineHeight: 1.25 }}>
-                  Zero Blackouts. Zero Glitches. Even Without Internet.
-                </h3>
-
-                <p style={{ fontSize: '14.5px', color: '#4A5260', lineHeight: 1.6, marginBottom: '24px' }}>
-                  Most traditional signage tools stream media from the web. If mall or clinic Wi-Fi drops, displays freeze with embarrassing error screens. Heramba pre-caches all 4K playlists onto hardware memory.
+                  Edge Reliability
                 </p>
 
-                {/* Interactive Simulator Toggle */}
-                <div style={{
-                  backgroundColor: '#FFFFFF',
-                  border: '1px solid #E2E5EA',
-                  borderRadius: '10px',
-                  padding: '18px 20px',
+                <h3 style={{
+                  fontSize: '22px',
+                  fontWeight: 800,
+                  color: '#FFFFFF',
+                  marginBottom: '12px',
+                  lineHeight: 1.3
+                }}>
+                  Zero blackouts. Media plays directly from device storage.
+                </h3>
+
+                <p style={{
+                  fontSize: '14px',
+                  color: '#888888',
+                  lineHeight: 1.6,
                   marginBottom: '24px'
                 }}>
-                  <div style={{ fontSize: '13px', fontWeight: 700, color: '#191D24', marginBottom: '10px' }}>
-                    Simulate Venue Network State:
+                  Traditional signage tools stream from the cloud and freeze when venue Wi-Fi stutters. Heramba caches all 4K content locally on the player SSD.
+                </p>
+
+                {/* Interactive Network Toggle */}
+                <div style={{
+                  backgroundColor: '#161616',
+                  border: '1px solid #242424',
+                  borderRadius: '6px',
+                  padding: '16px',
+                  marginBottom: '20px'
+                }}>
+                  <div style={{ fontSize: '12px', color: '#888888', marginBottom: '10px', fontWeight: 600 }}>
+                    Simulate Network State:
                   </div>
-                  <div style={{ display: 'flex', gap: '10px' }}>
+                  <div style={{ display: 'flex', gap: '8px' }}>
                     <button
                       onClick={() => setInternetOnline(true)}
                       style={{
                         flex: 1,
                         padding: '10px',
                         borderRadius: '6px',
-                        border: internetOnline ? '2px solid #10B981' : '1px solid #E2E5EA',
-                        backgroundColor: internetOnline ? 'rgba(16, 185, 129, 0.08)' : '#F8F9FA',
-                        color: internetOnline ? '#10B981' : '#4A5260',
+                        border: internetOnline ? '1px solid #FFE600' : '1px solid #242424',
+                        backgroundColor: internetOnline ? 'rgba(255, 230, 0, 0.08)' : '#0E0E0E',
+                        color: internetOnline ? '#FFE600' : '#666666',
                         fontWeight: 700,
-                        fontSize: '13px',
+                        fontSize: '12px',
                         cursor: 'pointer',
                         display: 'flex',
                         alignItems: 'center',
@@ -478,8 +482,8 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                         gap: '6px'
                       }}
                     >
-                      <Wifi size={16} />
-                      Internet Active
+                      <Wifi size={14} />
+                      Connected
                     </button>
                     <button
                       onClick={() => setInternetOnline(false)}
@@ -487,11 +491,11 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                         flex: 1,
                         padding: '10px',
                         borderRadius: '6px',
-                        border: !internetOnline ? '2px solid #EF4444' : '1px solid #E2E5EA',
-                        backgroundColor: !internetOnline ? 'rgba(239, 68, 68, 0.08)' : '#F8F9FA',
-                        color: !internetOnline ? '#EF4444' : '#4A5260',
+                        border: !internetOnline ? '1px solid #FFE600' : '1px solid #242424',
+                        backgroundColor: !internetOnline ? 'rgba(255, 230, 0, 0.08)' : '#0E0E0E',
+                        color: !internetOnline ? '#FFE600' : '#666666',
                         fontWeight: 700,
-                        fontSize: '13px',
+                        fontSize: '12px',
                         cursor: 'pointer',
                         display: 'flex',
                         alignItems: 'center',
@@ -499,98 +503,95 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                         gap: '6px'
                       }}
                     >
-                      <WifiOff size={16} />
-                      Simulate Wi-Fi Drop
+                      <WifiOff size={14} />
+                      Wi-Fi Lost
                     </button>
                   </div>
                 </div>
 
-                <div style={{ fontSize: '13.5px', color: '#717B8C', lineHeight: 1.5 }}>
-                  ● Hardware caches up to 64GB of local video loops<br/>
-                  ● Automatically reconciles analytics telemetry when connection restores
-                </div>
+                <p style={{ fontSize: '12px', color: '#666666', margin: 0 }}>
+                  Telemetry queues locally and reconciles the instant connectivity returns.
+                </p>
               </div>
 
-              {/* Edge Architecture Diagnostic Screen */}
+              {/* Diagnostic Box */}
               <div style={{
-                backgroundColor: '#FFFFFF',
-                borderRadius: '14px',
-                border: '6px solid #1E2532',
-                boxShadow: '0 20px 50px -10px rgba(43, 52, 69, 0.15)',
+                backgroundColor: '#0A0A0A',
+                borderRadius: '8px',
+                border: '1px solid #242424',
                 overflow: 'hidden'
               }}>
                 <div style={{
-                  backgroundColor: '#1E2532',
-                  padding: '10px 18px',
+                  padding: '12px 18px',
+                  borderBottom: '1px solid #1F1F1F',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  color: '#FFFFFF',
                   fontSize: '11px',
-                  fontWeight: 700
+                  color: '#666666'
                 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                     <span style={{
-                      width: '8px',
-                      height: '8px',
+                      width: '6px',
+                      height: '6px',
                       borderRadius: '50%',
-                      backgroundColor: internetOnline ? '#10B981' : '#F59E0B'
+                      backgroundColor: internetOnline ? '#FFE600' : '#666666'
                     }} />
-                    <span>DEVICE HARDWARE WATCHDOG</span>
+                    <span style={{ color: '#AAAAAA', fontWeight: 600 }}>PLAYER WATCHDOG</span>
                   </div>
-                  <div>
-                    {internetOnline ? 'STATUS: CLOUD LINKED' : 'STATUS: OFFLINE EDGE CACHE'}
-                  </div>
+                  <span style={{ color: '#FFE600', fontWeight: 700 }}>
+                    {internetOnline ? 'CLOUD CONNECTED' : 'OFFLINE CACHE RUNNING'}
+                  </span>
                 </div>
 
-                <div style={{ padding: '30px 26px' }}>
+                <div style={{ padding: '32px 28px' }}>
                   <div style={{
-                    backgroundColor: internetOnline ? 'rgba(16, 185, 129, 0.08)' : '#FFF5EE',
-                    border: `1px solid ${internetOnline ? 'rgba(16, 185, 129, 0.25)' : 'rgba(255, 119, 42, 0.3)'}`,
-                    borderRadius: '10px',
-                    padding: '16px 20px',
-                    marginBottom: '20px',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '14px'
+                    gap: '14px',
+                    padding: '16px',
+                    backgroundColor: '#141414',
+                    border: '1px solid #242424',
+                    borderRadius: '6px',
+                    marginBottom: '20px'
                   }}>
                     <div style={{
-                      width: '42px',
-                      height: '42px',
-                      borderRadius: '8px',
-                      backgroundColor: internetOnline ? '#10B981' : '#FFE600',
-                      color: '#FFFFFF',
+                      width: '36px',
+                      height: '36px',
+                      borderRadius: '6px',
+                      backgroundColor: '#FFE600',
+                      color: '#000000',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       flexShrink: 0
                     }}>
-                      {internetOnline ? <Wifi size={22} /> : <ShieldCheck size={22} />}
+                      {internetOnline ? <Wifi size={18} /> : <ShieldCheck size={18} />}
                     </div>
                     <div>
-                      <div style={{ fontSize: '15px', fontWeight: 800, color: '#191D24' }}>
-                        {internetOnline ? 'Full Cloud Sync Mode Active' : 'Edge Protection Engaged'}
+                      <div style={{ fontSize: '14px', fontWeight: 700, color: '#FFFFFF' }}>
+                        {internetOnline ? 'Real-Time Sync Active' : 'Offline Fail-Safe Engaged'}
                       </div>
-                      <div style={{ fontSize: '13px', color: '#4A5260', marginTop: '2px' }}>
+                      <div style={{ fontSize: '12px', color: '#777777', marginTop: '2px' }}>
                         {internetOnline 
-                          ? 'Real-time telemetry heartbeat arriving every 1,500ms.'
-                          : 'Local SSD memory streaming video seamlessly. 0 dropped frames.'}
+                          ? 'Device pinging cloud CMS with sub-second latency.'
+                          : 'Zero frame drop. Video loops seamlessly from local storage.'}
                       </div>
                     </div>
                   </div>
 
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', textAlign: 'center' }}>
-                    <div style={{ background: '#F8F9FA', padding: '12px', borderRadius: '8px', border: '1px solid #E2E5EA' }}>
-                      <div style={{ fontSize: '11px', color: '#717B8C', fontWeight: 600 }}>Display Frame Rate</div>
-                      <div style={{ fontSize: '17px', fontWeight: 800, color: '#191D24', marginTop: '4px' }}>60.0 FPS</div>
+                    <div style={{ background: '#141414', padding: '12px', borderRadius: '6px', border: '1px solid #222222' }}>
+                      <div style={{ fontSize: '11px', color: '#666666' }}>Framerate</div>
+                      <div style={{ fontSize: '15px', fontWeight: 800, color: '#FFE600', marginTop: '4px' }}>60 FPS</div>
                     </div>
-                    <div style={{ background: '#F8F9FA', padding: '12px', borderRadius: '8px', border: '1px solid #E2E5EA' }}>
-                      <div style={{ fontSize: '11px', color: '#717B8C', fontWeight: 600 }}>Memory Buffer</div>
-                      <div style={{ fontSize: '17px', fontWeight: 800, color: '#191D24', marginTop: '4px' }}>100% Ready</div>
+                    <div style={{ background: '#141414', padding: '12px', borderRadius: '6px', border: '1px solid #222222' }}>
+                      <div style={{ fontSize: '11px', color: '#666666' }}>Local Cache</div>
+                      <div style={{ fontSize: '15px', fontWeight: 800, color: '#FFFFFF', marginTop: '4px' }}>100% Ready</div>
                     </div>
-                    <div style={{ background: '#F8F9FA', padding: '12px', borderRadius: '8px', border: '1px solid #E2E5EA' }}>
-                      <div style={{ fontSize: '11px', color: '#717B8C', fontWeight: 600 }}>Blackout Risk</div>
-                      <div style={{ fontSize: '17px', fontWeight: 800, color: '#10B981', marginTop: '4px' }}>0.00%</div>
+                    <div style={{ background: '#141414', padding: '12px', borderRadius: '6px', border: '1px solid #222222' }}>
+                      <div style={{ fontSize: '11px', color: '#666666' }}>Blackout Risk</div>
+                      <div style={{ fontSize: '15px', fontWeight: 800, color: '#FFE600', marginTop: '4px' }}>0.00%</div>
                     </div>
                   </div>
                 </div>
@@ -598,47 +599,52 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
             </div>
           )}
 
-          {/* PILLAR 3: CENTRALIZED FLEET MATRIX */}
+          {/* PILLAR 3: CENTRALIZED FLEET */}
           {activePillar === 'fleet' && (
             <div style={{
               display: 'grid',
-              gridTemplateColumns: '1fr 1.25fr',
+              gridTemplateColumns: '1fr 1.2fr',
               gap: '40px',
               alignItems: 'center'
             }} id="showcase-subgrid">
               <div>
-                <div style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  backgroundColor: '#FFF5EE',
-                  color: '#FFE600',
-                  border: '1px solid rgba(255, 119, 42, 0.25)',
-                  padding: '4px 12px',
-                  borderRadius: '9999px',
+                <p style={{
                   fontSize: '11px',
                   fontWeight: 700,
-                  marginBottom: '14px'
+                  color: '#FFE600',
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  marginBottom: '10px'
                 }}>
-                  <Globe2 size={12} />
-                  ENTERPRISE FLEET MATRIX
-                </div>
-
-                <h3 style={{ fontSize: '24px', fontWeight: 800, color: '#191D24', marginBottom: '10px', lineHeight: 1.25 }}>
-                  Manage 5,000+ Displays as Effortlessly as 1 Screen
-                </h3>
-
-                <p style={{ fontSize: '14.5px', color: '#4A5260', lineHeight: 1.6, marginBottom: '24px' }}>
-                  Group physical screens by territory, brand category, or floor level. Push urgent firmware or marketing campaign updates simultaneously across global offices.
+                  Fleet Management
                 </p>
 
-                {/* City Selector Buttons */}
+                <h3 style={{
+                  fontSize: '22px',
+                  fontWeight: 800,
+                  color: '#FFFFFF',
+                  marginBottom: '12px',
+                  lineHeight: 1.3
+                }}>
+                  Manage 5,000+ displays as easily as a single screen.
+                </h3>
+
+                <p style={{
+                  fontSize: '14px',
+                  color: '#888888',
+                  lineHeight: 1.6,
+                  marginBottom: '20px'
+                }}>
+                  Organize displays by city, zone, or screen size. Push updates across your global network in seconds.
+                </p>
+
+                {/* City Selectors */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '20px' }}>
                   {[
                     { id: 'mumbai', label: 'Mumbai Flagship' },
                     { id: 'toronto', label: 'Toronto Clinic' },
                     { id: 'bengaluru', label: 'Bengaluru Retail' },
-                    { id: 'dubai', label: 'Dubai Mall Wall' }
+                    { id: 'dubai', label: 'Dubai Wall' }
                   ].map((city) => {
                     const isCity = selectedCity === city.id;
                     return (
@@ -646,13 +652,13 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                         key={city.id}
                         onClick={() => setSelectedCity(city.id as any)}
                         style={{
-                          padding: '10px 14px',
-                          borderRadius: '8px',
-                          backgroundColor: isCity ? '#2B3445' : '#FFFFFF',
-                          color: isCity ? '#FFFFFF' : '#2B3445',
-                          border: isCity ? '1px solid #2B3445' : '1px solid #E2E5EA',
-                          fontWeight: 700,
-                          fontSize: '12.5px',
+                          padding: '10px 12px',
+                          borderRadius: '6px',
+                          backgroundColor: isCity ? 'rgba(255, 230, 0, 0.08)' : '#161616',
+                          color: isCity ? '#FFE600' : '#888888',
+                          border: isCity ? '1px solid #FFE600' : '1px solid #242424',
+                          fontWeight: 600,
+                          fontSize: '12px',
                           cursor: 'pointer',
                           transition: 'all 0.15s ease',
                           textAlign: 'left'
@@ -666,89 +672,86 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
 
                 <button
                   onClick={handleFleetSync}
-                  className="btn btn-secondary"
                   style={{
-                    borderRadius: '8px',
-                    borderColor: '#2B3445',
-                    color: '#2B3445',
+                    backgroundColor: 'transparent',
+                    border: '1px solid #FFE600',
+                    color: '#FFE600',
+                    borderRadius: '6px',
+                    fontSize: '12.5px',
                     fontWeight: 700,
-                    fontSize: '13px',
-                    padding: '10px 18px',
+                    padding: '9px 16px',
+                    cursor: 'pointer',
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '8px'
                   }}
                 >
-                  <RefreshCw size={14} className={fleetSyncing ? 'pulse-dot' : ''} />
-                  <span>{fleetSyncing ? 'Syncing Network...' : 'Push Instant Global Firmware Sync'}</span>
+                  <RefreshCw size={13} className={fleetSyncing ? 'pulse-dot' : ''} />
+                  <span>{fleetSyncing ? 'Synchronizing Fleet...' : 'Trigger Network Sync'}</span>
                 </button>
               </div>
 
-              {/* Fleet Matrix Diagnostic Screen */}
+              {/* Fleet Display Box */}
               <div style={{
-                backgroundColor: '#FFFFFF',
-                borderRadius: '14px',
-                border: '6px solid #1E2532',
-                boxShadow: '0 20px 50px -10px rgba(43, 52, 69, 0.15)',
+                backgroundColor: '#0A0A0A',
+                borderRadius: '8px',
+                border: '1px solid #242424',
                 overflow: 'hidden'
               }}>
                 <div style={{
-                  backgroundColor: '#1E2532',
-                  padding: '10px 18px',
+                  padding: '12px 18px',
+                  borderBottom: '1px solid #1F1F1F',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                  color: '#FFFFFF',
                   fontSize: '11px',
-                  fontWeight: 700
+                  color: '#666666'
                 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#10B981' }} />
-                    <span>TELEMETRY CLUSTER // {selectedCity.toUpperCase()}</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#FFE600' }} />
+                    <span style={{ color: '#AAAAAA', fontWeight: 600 }}>CLUSTER // {selectedCity.toUpperCase()}</span>
                   </div>
-                  <div style={{ color: '#FFE600' }}>
+                  <span style={{ color: '#FFE600', fontWeight: 700 }}>
                     {fleetData[selectedCity].screens}
-                  </div>
+                  </span>
                 </div>
 
-                <div style={{ padding: '26px' }}>
-                  <div style={{ fontSize: '17px', fontWeight: 800, color: '#191D24', marginBottom: '4px' }}>
+                <div style={{ padding: '28px' }}>
+                  <div style={{ fontSize: '16px', fontWeight: 700, color: '#FFFFFF', marginBottom: '4px' }}>
                     {fleetData[selectedCity].location}
                   </div>
-                  <div style={{ fontSize: '13px', color: '#10B981', fontWeight: 700, marginBottom: '18px' }}>
-                    ● {fleetData[selectedCity].status}
+                  <div style={{ fontSize: '12px', color: '#FFE600', fontWeight: 600, marginBottom: '20px' }}>
+                    {fleetData[selectedCity].resolution}
                   </div>
 
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '16px' }}>
-                    <div style={{ background: '#F8F9FA', padding: '12px 14px', borderRadius: '8px', border: '1px solid #E2E5EA' }}>
-                      <div style={{ fontSize: '11px', color: '#717B8C', fontWeight: 600 }}>Active Broadcast</div>
-                      <div style={{ fontSize: '13.5px', fontWeight: 700, color: '#FFE600', marginTop: '2px' }}>
-                        {fleetData[selectedCity].activeAd}
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '16px' }}>
+                    <div style={{ background: '#141414', padding: '12px', borderRadius: '6px', border: '1px solid #222222' }}>
+                      <div style={{ fontSize: '11px', color: '#666666' }}>Active Content</div>
+                      <div style={{ fontSize: '13px', fontWeight: 600, color: '#CCCCCC', marginTop: '3px' }}>
+                        {fleetData[selectedCity].activeContent}
                       </div>
                     </div>
-
-                    <div style={{ background: '#F8F9FA', padding: '12px 14px', borderRadius: '8px', border: '1px solid #E2E5EA' }}>
-                      <div style={{ fontSize: '11px', color: '#717B8C', fontWeight: 600 }}>Hardware Storage</div>
-                      <div style={{ fontSize: '13.5px', fontWeight: 700, color: '#2B3445', marginTop: '2px' }}>
+                    <div style={{ background: '#141414', padding: '12px', borderRadius: '6px', border: '1px solid #222222' }}>
+                      <div style={{ fontSize: '11px', color: '#666666' }}>Cached Storage</div>
+                      <div style={{ fontSize: '13px', fontWeight: 600, color: '#CCCCCC', marginTop: '3px' }}>
                         {fleetData[selectedCity].storage}
                       </div>
                     </div>
                   </div>
 
                   <div style={{
-                    padding: '12px 16px',
-                    borderRadius: '8px',
-                    background: '#FFF5EE',
-                    border: '1px solid rgba(255, 119, 42, 0.25)',
+                    padding: '10px 14px',
+                    borderRadius: '6px',
+                    background: '#141414',
+                    border: '1px solid #222222',
+                    fontSize: '11px',
+                    color: '#888888',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'space-between',
-                    fontSize: '12px',
-                    color: '#FFE600',
-                    fontWeight: 700
+                    justifyContent: 'space-between'
                   }}>
-                    <span>Hardware Sensor: {fleetData[selectedCity].temp}</span>
-                    <span>99.98% SLA Guaranteed</span>
+                    <span>Uptime SLA: 99.98%</span>
+                    <span style={{ color: '#FFE600' }}>Cloud Synchronized</span>
                   </div>
                 </div>
               </div>
@@ -761,10 +764,6 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
 
       <style>{`
         @media (max-width: 960px) {
-          #showcase-header {
-            grid-template-columns: 1fr !important;
-            gap: 20px !important;
-          }
           #pillar-tabs {
             grid-template-columns: 1fr !important;
           }
