@@ -6,7 +6,8 @@ import {
   ArrowRight, 
   Tv, 
   Layers, 
-  Sun 
+  Sun,
+  TrendingUp
 } from 'lucide-react';
 
 export const AdvantagesSection: React.FC<{ onOpenTrial: () => void; onOpenContact: () => void }> = ({
@@ -14,36 +15,37 @@ export const AdvantagesSection: React.FC<{ onOpenTrial: () => void; onOpenContac
   onOpenContact
 }) => {
   const [activeTab, setActiveTab] = useState<'comparison' | 'hardware'>('comparison');
+  const [hoveredRow, setHoveredRow] = useState<number | null>(null);
 
   const comparisonRows = [
     {
-      metric: 'Content Turnaround Time',
+      metric: 'Turnaround Time',
       print: '5–7 business days (Design, print proofing, dispatch & manual hanging)',
-      heramba: 'Under 30 seconds (Push directly from phone or browser to 1 or 5,000 screens)',
+      heramba: 'Under 30 seconds (Push directly from browser to 1 or 5,000 screens)',
       impact: 'Instant Flash Deals'
     },
     {
-      metric: 'Monthly Operating Overhead',
-      print: 'High recurrent monthly expenditure on vinyl, shipping & store technician labor',
+      metric: 'Operating Overhead',
+      print: 'High recurrent monthly expenditure on vinyl, shipping & technician labor',
       heramba: '₹0 recurrent printing expenses. Predictable, low per-screen subscription',
       impact: '80% Cost Reduction'
     },
     {
-      metric: 'Promotions Per Physical Location',
-      print: 'Limited to 1 fixed poster. Cluttered physical space and banner blindness',
-      heramba: 'Infinite rotational playlists, live video reels, and dynamic dayparted menus',
-      impact: '10X Offer Capacity'
+      metric: 'Display Capacity',
+      print: 'Limited to 1 fixed poster. Cluttered physical space & banner fatigue',
+      heramba: 'Infinite rotational playlists, 4K reels, and dynamic dayparted schedules',
+      impact: '10X Offer Density'
     },
     {
-      metric: 'Audience Engagement & Attention',
-      print: 'Static visual fatigue. Ignored by modern smartphone-driven shoppers',
-      heramba: '3X–5X measured engagement lift via motion graphics & QR discount incentives',
+      metric: 'Audience Attention',
+      print: 'Static visual fatigue. Routinely ignored by smartphone-first visitors',
+      heramba: '3X–5X engagement boost via motion graphics & synchronized video walls',
       impact: '+38% Footfall Lift'
     },
     {
-      metric: 'Proof of Play & Compliance',
-      print: 'Zero audit trail. No verification whether store associates hung posters',
-      heramba: 'Centralized live telemetry, playback logs, and uptime verification',
+      metric: 'Proof of Play',
+      print: 'Zero audit trail. No verification whether store teams hung posters',
+      heramba: 'Centralized telemetry, sub-second uptime logs, and compliance audits',
       impact: '100% Audit Verified'
     }
   ];
@@ -54,31 +56,34 @@ export const AdvantagesSection: React.FC<{ onOpenTrial: () => void; onOpenContac
       tag: 'Plug & Play Retail',
       spec: '43" to 65" • 4K UHD • Tempered Glass Bezel',
       desc: 'Slim floor-standing kiosks engineered for high-footfall entrances, mall atriums, and hotel lobbies with integrated lockable wheels.',
-      icon: <Tv size={22} color="#FFE600" />
+      icon: <Tv size={22} />
     },
     {
       title: 'High-Brightness Window Displays',
       tag: 'Sunlight Readable',
       spec: '3,500+ Nits • Thermal Management • 24/7 Duty',
       desc: 'Ultra-bright commercial panels designed to cut through direct harsh sunlight and glaring reflections for street-facing storefronts.',
-      icon: <Sun size={22} color="#2B3445" />
+      icon: <Sun size={22} />
     },
     {
       title: 'Synchronized Multi-Screen Video Walls',
       tag: 'Enterprise Showrooms',
       spec: '0.88mm Bezel • Daisy-Chain 4K • Cloud Canvas',
       desc: 'Seamless multi-panel canvas that transforms airport concourses and corporate flagship lobbies into synchronized visual experiences.',
-      icon: <Layers size={22} color="#FFE600" />
+      icon: <Layers size={22} />
     }
   ];
 
   return (
     <section id="advantages" style={{
-      backgroundColor: '#FFFFFF',
-      padding: '100px 0',
-      borderBottom: '1px solid #E2E5EA'
+      backgroundColor: '#0A0A0A',
+      color: '#FFFFFF',
+      padding: '110px 0',
+      borderTop: '1px solid #1A1A1A',
+      borderBottom: '1px solid #1A1A1A',
+      position: 'relative'
     }}>
-      <div className="container">
+      <div className="container" style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 24px' }}>
         
         {/* Header with Switcher Tabs */}
         <div style={{
@@ -87,63 +92,73 @@ export const AdvantagesSection: React.FC<{ onOpenTrial: () => void; onOpenContac
           justifyContent: 'space-between',
           flexWrap: 'wrap',
           gap: '24px',
-          marginBottom: '44px'
+          marginBottom: '48px'
         }}>
-          <div style={{ maxWidth: '680px' }}>
+          <div style={{ maxWidth: '640px' }}>
+            <p style={{
+              fontSize: '11px',
+              fontWeight: 700,
+              letterSpacing: '0.16em',
+              textTransform: 'uppercase',
+              color: '#FFE600',
+              marginBottom: '12px'
+            }}>
+              ROI & Unit Economics
+            </p>
             <h2 style={{
-              fontSize: 'clamp(32px, 4.4vw, 46px)',
+              fontSize: 'clamp(28px, 4vw, 44px)',
               fontWeight: 800,
-              color: '#191D24',
+              color: '#FFFFFF',
               letterSpacing: '-0.035em',
               lineHeight: 1.15,
-              marginBottom: '14px'
+              marginBottom: '12px'
             }}>
-              The Economics of Digital Signage
+              The Economics of <span style={{ color: '#FFE600' }}>Digital Signage</span>
             </h2>
-            <p style={{ fontSize: '16px', color: '#717B8C', lineHeight: 1.6, margin: 0 }}>
+            <p style={{ fontSize: '15px', color: '#888888', lineHeight: 1.6, margin: 0 }}>
               Compare traditional physical banner printing with Heramba’s cloud display software and turnkey hardware ecosystem.
             </p>
           </div>
 
-          {/* Toggle pill */}
+          {/* Minimal Tab Switcher */}
           <div style={{
             display: 'inline-flex',
-            backgroundColor: '#F8F9FA',
-            padding: '5px',
-            borderRadius: '10px',
-            border: '1px solid #E2E5EA'
+            backgroundColor: '#111111',
+            padding: '4px',
+            borderRadius: '8px',
+            border: '1px solid #222222'
           }}>
             <button
               onClick={() => setActiveTab('comparison')}
               style={{
-                padding: '8px 18px',
-                borderRadius: '7px',
+                padding: '9px 18px',
+                borderRadius: '6px',
                 border: 'none',
-                backgroundColor: activeTab === 'comparison' ? '#2B3445' : 'transparent',
-                color: activeTab === 'comparison' ? '#FFFFFF' : '#4A5260',
+                backgroundColor: activeTab === 'comparison' ? '#FFE600' : 'transparent',
+                color: activeTab === 'comparison' ? '#000000' : '#888888',
                 fontSize: '13px',
                 fontWeight: 700,
                 cursor: 'pointer',
-                transition: 'all 0.15s ease'
+                transition: 'all 0.18s ease'
               }}
             >
-              Print vs. Heramba Comparison
+              Print vs. Heramba
             </button>
             <button
               onClick={() => setActiveTab('hardware')}
               style={{
-                padding: '8px 18px',
-                borderRadius: '7px',
+                padding: '9px 18px',
+                borderRadius: '6px',
                 border: 'none',
-                backgroundColor: activeTab === 'hardware' ? '#2B3445' : 'transparent',
-                color: activeTab === 'hardware' ? '#FFFFFF' : '#4A5260',
+                backgroundColor: activeTab === 'hardware' ? '#FFE600' : 'transparent',
+                color: activeTab === 'hardware' ? '#000000' : '#888888',
                 fontSize: '13px',
                 fontWeight: 700,
                 cursor: 'pointer',
-                transition: 'all 0.15s ease'
+                transition: 'all 0.18s ease'
               }}
             >
-              Turnkey Hardware Packages
+              Hardware Packages
             </button>
           </div>
         </div>
@@ -151,75 +166,116 @@ export const AdvantagesSection: React.FC<{ onOpenTrial: () => void; onOpenContac
         {/* VIEW 1: COMPARISON TABLE */}
         {activeTab === 'comparison' && (
           <div style={{
-            backgroundColor: '#FFFFFF',
-            border: '1px solid #E2E5EA',
-            borderRadius: '16px',
+            backgroundColor: '#111111',
+            border: '1px solid #222222',
+            borderRadius: '12px',
             overflow: 'hidden',
-            boxShadow: '0 8px 30px rgba(43, 52, 69, 0.05)',
-            marginBottom: '48px'
+            marginBottom: '48px',
+            boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)'
           }}>
             {/* Table Header */}
             <div style={{
               display: 'grid',
               gridTemplateColumns: '1.2fr 1.6fr 1.8fr 1fr',
-              padding: '18px 26px',
-              backgroundColor: '#F8F9FA',
-              borderBottom: '1px solid #E2E5EA',
-              fontSize: '12px',
+              padding: '16px 24px',
+              backgroundColor: '#0E0E0E',
+              borderBottom: '1px solid #1F1F1F',
+              fontSize: '11px',
               fontWeight: 800,
-              color: '#2B3445',
-              letterSpacing: '0.04em',
+              color: '#777777',
+              letterSpacing: '0.08em',
               textTransform: 'uppercase'
             }} id="comp-table-header">
-              <div>Dimension</div>
+              <div>Metric</div>
               <div>Traditional Static Print</div>
               <div style={{ color: '#FFE600' }}>Heramba Cloud Signage</div>
               <div style={{ textAlign: 'right' }}>Business Impact</div>
             </div>
 
             {/* Table Rows */}
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              {comparisonRows.map((row, idx) => (
-                <div
-                  key={idx}
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: '1.2fr 1.6fr 1.8fr 1fr',
-                    padding: '22px 26px',
-                    borderBottom: idx < comparisonRows.length - 1 ? '1px solid #F1F3F5' : 'none',
-                    alignItems: 'center',
-                    backgroundColor: idx % 2 === 0 ? '#FFFFFF' : '#FCFDFD',
-                    fontSize: '14px'
-                  }}
-                  id={`comp-row-${idx}`}
-                  className="comp-table-row"
-                >
-                  <div style={{ fontWeight: 800, color: '#191D24', paddingRight: '12px' }}>
-                    {row.metric}
-                  </div>
-                  <div style={{ color: '#717B8C', paddingRight: '16px', display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-                    <X size={16} color="#9CA3AF" style={{ flexShrink: 0, marginTop: '3px' }} />
-                    <span>{row.print}</span>
-                  </div>
-                  <div style={{ color: '#191D24', fontWeight: 600, paddingRight: '16px', display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-                    <Check size={16} color="#FFE600" style={{ flexShrink: 0, marginTop: '3px' }} />
-                    <span>{row.heramba}</span>
-                  </div>
-                  <div style={{ textAlign: 'right' }}>
-                    <span style={{
-                      display: 'inline-block',
-                      padding: '4px 10px',
-                      borderRadius: '6px',
-                      backgroundColor: 'rgba(255, 119, 42, 0.09)',
-                      color: '#FFE600',
-                      fontSize: '12px',
-                      fontWeight: 700
+            <div>
+              {comparisonRows.map((row, idx) => {
+                const isHovered = hoveredRow === idx;
+                return (
+                  <div
+                    key={idx}
+                    onMouseEnter={() => setHoveredRow(idx)}
+                    onMouseLeave={() => setHoveredRow(null)}
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: '1.2fr 1.6fr 1.8fr 1fr',
+                      padding: '22px 24px',
+                      borderBottom: idx < comparisonRows.length - 1 ? '1px solid #1A1A1A' : 'none',
+                      alignItems: 'center',
+                      backgroundColor: isHovered ? '#161616' : '#111111',
+                      borderLeft: isHovered ? '3px solid #FFE600' : '3px solid transparent',
+                      transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
+                      fontSize: '13.5px',
+                      cursor: 'default'
+                    }}
+                    className="comp-table-row"
+                  >
+                    {/* Metric */}
+                    <div style={{
+                      fontWeight: 700,
+                      color: isHovered ? '#FFFFFF' : '#D0D0D0',
+                      paddingRight: '12px',
+                      transition: 'color 0.18s ease'
                     }}>
-                      {row.impact}
-                    </span>
+                      {row.metric}
+                    </div>
+
+                    {/* Print (Drawback) */}
+                    <div style={{
+                      color: '#666666',
+                      paddingRight: '16px',
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: '8px',
+                      lineHeight: 1.5
+                    }}>
+                      <X size={15} color="#555555" style={{ flexShrink: 0, marginTop: '3px' }} />
+                      <span>{row.print}</span>
+                    </div>
+
+                    {/* Heramba Advantage */}
+                    <div style={{
+                      color: isHovered ? '#FFFFFF' : '#E8E8E8',
+                      fontWeight: 600,
+                      paddingRight: '16px',
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: '8px',
+                      lineHeight: 1.5,
+                      transition: 'color 0.18s ease'
+                    }}>
+                      <Check size={16} color="#FFE600" strokeWidth={2.5} style={{ flexShrink: 0, marginTop: '2px' }} />
+                      <span>{row.heramba}</span>
+                    </div>
+
+                    {/* Business Impact Pill */}
+                    <div style={{ textAlign: 'right' }}>
+                      <span style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '4px',
+                        padding: '5px 12px',
+                        borderRadius: '6px',
+                        backgroundColor: isHovered ? 'rgba(255, 230, 0, 0.15)' : 'rgba(255, 230, 0, 0.08)',
+                        color: '#FFE600',
+                        border: isHovered ? '1px solid #FFE600' : '1px solid rgba(255, 230, 0, 0.25)',
+                        fontSize: '11px',
+                        fontWeight: 700,
+                        letterSpacing: '0.02em',
+                        transition: 'all 0.18s ease'
+                      }}>
+                        <TrendingUp size={11} strokeWidth={2.5} />
+                        {row.impact}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}
@@ -229,30 +285,43 @@ export const AdvantagesSection: React.FC<{ onOpenTrial: () => void; onOpenContac
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '24px',
+            gap: '18px',
             marginBottom: '48px'
           }} id="hardware-cards">
             {hardwareHighlights.map((hw, idx) => (
               <div
                 key={idx}
-                className="light-card"
+                className="hw-card"
                 style={{
-                  padding: '32px 28px',
-                  borderRadius: '16px',
-                  backgroundColor: '#FFFFFF',
-                  borderColor: '#E2E5EA',
+                  padding: '30px 26px',
+                  borderRadius: '12px',
+                  backgroundColor: '#111111',
+                  border: '1px solid #222222',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '16px',
-                  boxShadow: '0 4px 16px rgba(43, 52, 69, 0.04)'
+                  transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
+                  cursor: 'pointer'
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.borderColor = '#FFE600';
+                  e.currentTarget.style.transform = 'translateY(-4px)';
+                  e.currentTarget.style.boxShadow = '0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 230, 0, 0.08)';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.borderColor = '#222222';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = 'none';
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <div style={{
-                    width: '44px',
-                    height: '44px',
-                    borderRadius: '10px',
-                    backgroundColor: idx % 2 === 0 ? 'rgba(255, 119, 42, 0.09)' : 'rgba(43, 52, 69, 0.08)',
+                    width: '42px',
+                    height: '42px',
+                    borderRadius: '8px',
+                    backgroundColor: 'rgba(255, 230, 0, 0.1)',
+                    border: '1px solid rgba(255, 230, 0, 0.25)',
+                    color: '#FFE600',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center'
@@ -261,9 +330,9 @@ export const AdvantagesSection: React.FC<{ onOpenTrial: () => void; onOpenContac
                   </div>
                   <span style={{
                     fontSize: '11px',
-                    fontWeight: 800,
-                    color: '#717B8C',
-                    letterSpacing: '0.04em',
+                    fontWeight: 700,
+                    color: '#888888',
+                    letterSpacing: '0.06em',
                     textTransform: 'uppercase'
                   }}>
                     {hw.tag}
@@ -271,13 +340,13 @@ export const AdvantagesSection: React.FC<{ onOpenTrial: () => void; onOpenContac
                 </div>
 
                 <div>
-                  <h3 style={{ fontSize: '18px', fontWeight: 800, color: '#191D24', marginBottom: '6px' }}>
+                  <h3 style={{ fontSize: '17px', fontWeight: 700, color: '#FFFFFF', marginBottom: '6px' }}>
                     {hw.title}
                   </h3>
-                  <div style={{ fontSize: '12px', fontWeight: 700, color: '#FFE600', marginBottom: '12px' }}>
+                  <div style={{ fontSize: '12px', fontWeight: 600, color: '#FFE600', marginBottom: '10px' }}>
                     {hw.spec}
                   </div>
-                  <p style={{ fontSize: '13.5px', color: '#4A5260', lineHeight: 1.55, margin: 0 }}>
+                  <p style={{ fontSize: '13px', color: '#888888', lineHeight: 1.6, margin: 0 }}>
                     {hw.desc}
                   </p>
                 </div>
@@ -286,51 +355,77 @@ export const AdvantagesSection: React.FC<{ onOpenTrial: () => void; onOpenContac
           </div>
         )}
 
-        {/* Call to Action Banner */}
+        {/* Minimal Dark Call to Action Banner */}
         <div style={{
-          background: 'linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%)',
-          border: '1px solid #E2E5EA',
-          borderRadius: '16px',
-          padding: '36px 42px',
+          backgroundColor: '#111111',
+          border: '1px solid #222222',
+          borderRadius: '12px',
+          padding: '32px 38px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
           flexWrap: 'wrap',
-          gap: '24px',
-          boxShadow: '0 8px 30px rgba(43, 52, 69, 0.04)'
+          gap: '24px'
         }}>
           <div>
-            <div style={{ fontSize: '22px', fontWeight: 800, color: '#191D24', marginBottom: '6px' }}>
-              Special Annual Plan Offer: 50% Off On Your First Year
+            <div style={{ fontSize: '18px', fontWeight: 800, color: '#FFFFFF', marginBottom: '6px' }}>
+              Special Annual Plan: <span style={{ color: '#FFE600' }}>50% Off First Year</span>
             </div>
-            <div style={{ fontSize: '14px', color: '#717B8C' }}>
-              Deploy in under 5 minutes on your existing smart TVs or commercial displays with zero hardware investment.
+            <div style={{ fontSize: '13.5px', color: '#888888' }}>
+              Deploy in under 5 minutes on your existing smart TVs or hardware with zero installation lock-in.
             </div>
           </div>
 
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
             <button
               onClick={onOpenTrial}
-              className="btn btn-primary"
               style={{
-                padding: '12px 28px',
+                padding: '11px 24px',
                 backgroundColor: '#FFE600',
-                color: '#FFFFFF',
-                borderRadius: '8px',
-                fontWeight: 700
+                color: '#000000',
+                borderRadius: '6px',
+                fontWeight: 700,
+                fontSize: '13px',
+                border: 'none',
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                transition: 'all 0.18s ease'
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.backgroundColor = '#F5DC00';
+                e.currentTarget.style.transform = 'translateY(-1px)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.backgroundColor = '#FFE600';
+                e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
               <span>Start Free Trial</span>
-              <ArrowRight size={15} />
+              <ArrowRight size={14} strokeWidth={2.5} />
             </button>
             <button
               onClick={onOpenContact}
-              className="btn btn-secondary"
               style={{
-                borderColor: '#2B3445',
-                color: '#2B3445',
-                borderRadius: '8px',
-                fontWeight: 700
+                borderColor: '#333333',
+                color: '#CCCCCC',
+                backgroundColor: 'transparent',
+                border: '1px solid #333333',
+                borderRadius: '6px',
+                padding: '11px 20px',
+                fontWeight: 600,
+                fontSize: '13px',
+                cursor: 'pointer',
+                transition: 'all 0.18s ease'
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = '#FFE600';
+                e.currentTarget.style.color = '#FFE600';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = '#333333';
+                e.currentTarget.style.color = '#CCCCCC';
               }}
             >
               Consult an Expert
