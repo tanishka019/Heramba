@@ -13,6 +13,7 @@ interface NavbarProps {
 }
 
 const NAV_ITEMS = [
+  { label: 'Home',       href: '/' },
   { label: 'Solutions',  href: '/solutions' },
   { label: 'Features',   href: '/features' },
   { label: 'Sectors',    href: '/sectors' },
@@ -35,7 +36,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTrial, onOpenContact }) =>
   useEffect(() => { setMobileOpen(false); }, [pathname]);
 
   const isActive = (href: string) =>
-    pathname === href || pathname.startsWith(href + '/');
+    href === '/' ? pathname === '/' : (pathname === href || pathname.startsWith(href + '/'));
 
   const handleContact = () => {
     setMobileOpen(false);
