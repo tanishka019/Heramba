@@ -199,7 +199,7 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                   padding: '18px 20px',
                   borderRadius: '12px',
                   backgroundColor: isSelected ? '#FFFFFF' : '#F8F9FA',
-                  border: isSelected ? '2px solid #FF772A' : '1px solid #E2E5EA',
+                  border: isSelected ? '2px solid #FFE600' : '1px solid #E2E5EA',
                   boxShadow: isSelected ? '0 10px 25px -4px rgba(255, 119, 42, 0.15)' : 'none',
                   cursor: 'pointer',
                   textAlign: 'left',
@@ -212,7 +212,7 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                   borderRadius: '8px',
                   backgroundColor: isSelected ? '#FFF5EE' : '#FFFFFF',
                   border: `1px solid ${isSelected ? 'rgba(255, 119, 42, 0.3)' : '#E2E5EA'}`,
-                  color: isSelected ? '#FF772A' : '#2B3445',
+                  color: isSelected ? '#FFE600' : '#2B3445',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -266,7 +266,7 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                   alignItems: 'center',
                   gap: '6px',
                   backgroundColor: '#FFF5EE',
-                  color: '#FF772A',
+                  color: '#FFE600',
                   border: '1px solid rgba(255, 119, 42, 0.25)',
                   padding: '4px 12px',
                   borderRadius: '9999px',
@@ -304,9 +304,9 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                           justifyContent: 'space-between',
                           padding: '12px 16px',
                           borderRadius: '8px',
-                          backgroundColor: isSlot ? '#FF772A' : '#FFFFFF',
+                          backgroundColor: isSlot ? '#FFE600' : '#FFFFFF',
                           color: isSlot ? '#FFFFFF' : '#2B3445',
-                          border: isSlot ? '1px solid #FF772A' : '1px solid #E2E5EA',
+                          border: isSlot ? '1px solid #FFE600' : '1px solid #E2E5EA',
                           fontWeight: 700,
                           fontSize: '13.5px',
                           cursor: 'pointer',
@@ -358,7 +358,7 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                     <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#10B981' }} />
                     HERAMBA 4K DISPLAY // LIVE AUTOMATION
                   </div>
-                  <div style={{ color: '#FF772A' }}>
+                  <div style={{ color: '#FFE600' }}>
                     {daypartingData[timeSlot].time}
                   </div>
                 </div>
@@ -369,7 +369,7 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                     padding: '4px 12px',
                     borderRadius: '9999px',
                     backgroundColor: '#FFF2E8',
-                    color: '#FF772A',
+                    color: '#FFE600',
                     fontSize: '11px',
                     fontWeight: 800,
                     marginBottom: '12px',
@@ -396,7 +396,7 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                   }}>
                     <div style={{ textAlign: 'left' }}>
                       <div style={{ fontSize: '11px', color: '#717B8C', fontWeight: 600 }}>Featured Highlight</div>
-                      <div style={{ fontSize: '15px', fontWeight: 800, color: '#FF772A' }}>{daypartingData[timeSlot].highlight}</div>
+                      <div style={{ fontSize: '15px', fontWeight: 800, color: '#FFE600' }}>{daypartingData[timeSlot].highlight}</div>
                     </div>
                     <div style={{ textAlign: 'right' }}>
                       <div style={{ fontSize: '11px', color: '#717B8C', fontWeight: 600 }}>Measured Lift</div>
@@ -428,7 +428,7 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                   alignItems: 'center',
                   gap: '6px',
                   backgroundColor: '#FFF5EE',
-                  color: '#FF772A',
+                  color: '#FFE600',
                   border: '1px solid rgba(255, 119, 42, 0.25)',
                   padding: '4px 12px',
                   borderRadius: '9999px',
@@ -558,7 +558,7 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                       width: '42px',
                       height: '42px',
                       borderRadius: '8px',
-                      backgroundColor: internetOnline ? '#10B981' : '#FF772A',
+                      backgroundColor: internetOnline ? '#10B981' : '#FFE600',
                       color: '#FFFFFF',
                       display: 'flex',
                       alignItems: 'center',
@@ -612,7 +612,7 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                   alignItems: 'center',
                   gap: '6px',
                   backgroundColor: '#FFF5EE',
-                  color: '#FF772A',
+                  color: '#FFE600',
                   border: '1px solid rgba(255, 119, 42, 0.25)',
                   padding: '4px 12px',
                   borderRadius: '9999px',
@@ -706,7 +706,7 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                     <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#10B981' }} />
                     <span>TELEMETRY CLUSTER // {selectedCity.toUpperCase()}</span>
                   </div>
-                  <div style={{ color: '#FF772A' }}>
+                  <div style={{ color: '#FFE600' }}>
                     {fleetData[selectedCity].screens}
                   </div>
                 </div>
@@ -722,7 +722,7 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '16px' }}>
                     <div style={{ background: '#F8F9FA', padding: '12px 14px', borderRadius: '8px', border: '1px solid #E2E5EA' }}>
                       <div style={{ fontSize: '11px', color: '#717B8C', fontWeight: 600 }}>Active Broadcast</div>
-                      <div style={{ fontSize: '13.5px', fontWeight: 700, color: '#FF772A', marginTop: '2px' }}>
+                      <div style={{ fontSize: '13.5px', fontWeight: 700, color: '#FFE600', marginTop: '2px' }}>
                         {fleetData[selectedCity].activeAd}
                       </div>
                     </div>
@@ -744,7 +744,7 @@ export const PlatformShowcase: React.FC<{ onOpenTrial: () => void }> = ({ onOpen
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     fontSize: '12px',
-                    color: '#FF772A',
+                    color: '#FFE600',
                     fontWeight: 700
                   }}>
                     <span>Hardware Sensor: {fleetData[selectedCity].temp}</span>

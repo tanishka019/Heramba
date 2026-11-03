@@ -12,7 +12,7 @@ export const Testimonials: React.FC = () => {
       role: "Multi-Specialty Healthcare Clinic Chain",
       location: "Toronto, Canada",
       size: "100–500 employees",
-      icon: <HeartPulse size={20} color="#FF772A" />
+      icon: <HeartPulse size={20} color="#FFE600" />
     },
     {
       quote: "Heramba is one of our Top 3 IT vendors. The team is very professional and has deployed their solution across 250+ retail stores nationwide. The solution itself is very easy to use, is in line with our business needs, and has the capability to be customized to meet our larger omni-channel retail goals.",
@@ -28,7 +28,7 @@ export const Testimonials: React.FC = () => {
       role: "Enterprise IT Managed Service Reseller",
       location: "Dallas, USA",
       size: "50–200 employees",
-      icon: <Laptop size={20} color="#FF772A" />
+      icon: <Laptop size={20} color="#FFE600" />
     },
     {
       quote: "Heramba has exceeded our expectations in every aspect. It's a powerful, user-friendly, and reliable solution that has transformed the way we showcase our new season collections. From the moment we integrated this software into our flagship stores, the impact on visual merchandising and walk-ins has been extraordinary.",
@@ -102,9 +102,9 @@ export const Testimonials: React.FC = () => {
               }}>
                 {current.icon}
               </div>
-              <div style={{ display: 'flex', color: '#FF772A', gap: '2px' }}>
+              <div style={{ display: 'flex', color: '#FFE600', gap: '2px' }}>
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={16} fill="#FF772A" />
+                  <Star key={i} size={16} fill="#FFE600" />
                 ))}
               </div>
             </div>
@@ -165,8 +165,8 @@ export const Testimonials: React.FC = () => {
                   boxShadow: '0 2px 6px rgba(25, 29, 36, 0.04)'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = '#FF772A';
-                  e.currentTarget.style.color = '#FF772A';
+                  e.currentTarget.style.borderColor = '#FFE600';
+                  e.currentTarget.style.color = '#FFE600';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor = '#D8DCE3';
@@ -198,8 +198,8 @@ export const Testimonials: React.FC = () => {
                   boxShadow: '0 2px 6px rgba(25, 29, 36, 0.04)'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = '#FF772A';
-                  e.currentTarget.style.color = '#FF772A';
+                  e.currentTarget.style.borderColor = '#FFE600';
+                  e.currentTarget.style.color = '#FFE600';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor = '#D8DCE3';

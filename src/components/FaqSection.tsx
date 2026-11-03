@@ -95,7 +95,7 @@ export const FaqSection: React.FC<{ onOpenTrial: () => void }> = () => {
                   <span style={{
                     fontSize: '16.5px',
                     fontWeight: 700,
-                    color: isOpen ? '#FF772A' : '#191D24',
+                    color: isOpen ? '#FFE600' : '#191D24',
                     paddingRight: '18px',
                     lineHeight: 1.4,
                     transition: 'color 0.15s ease'
@@ -114,7 +114,7 @@ export const FaqSection: React.FC<{ onOpenTrial: () => void }> = () => {
                   }}>
                     <ChevronDown
                       size={18}
-                      color={isOpen ? '#FF772A' : '#717B8C'}
+                      color={isOpen ? '#FFE600' : '#717B8C'}
                       style={{
                         transform: isOpen ? 'rotate(180deg)' : 'none',
                         transition: 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)',

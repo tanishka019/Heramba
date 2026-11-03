@@ -28,7 +28,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="heramba-app" style={{ minHeight: '100vh', backgroundColor: '#FFFFFF', color: 'var(--text-body)' }}>
+    <div className="heramba-app" style={{ minHeight: '100vh', backgroundColor: '#0A0A0A', color: 'var(--text-body)' }}>
       {/* Top Contact Bar */}
       <TopBar />
 

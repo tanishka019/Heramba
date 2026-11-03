@@ -38,7 +38,7 @@ export const IntroSummary: React.FC<{ onOpenTrial: () => void }> = ({ onOpenTria
               lineHeight: 1.7,
               marginBottom: '18px'
             }}>
-              Heramba is a <strong>lightning-fast, real-time, and personalized</strong> cloud signage network that amplifies viewer engagement and physical retail conversion by up to <strong style={{ color: '#FF772A' }}>3X–5X times</strong> through intelligent screen automation.
+              Heramba is a <strong>lightning-fast, real-time, and personalized</strong> cloud signage network that amplifies viewer engagement and physical retail conversion by up to <strong style={{ color: '#FFE600' }}>3X–5X times</strong> through intelligent screen automation.
             </p>
 
             <p style={{
@@ -58,7 +58,7 @@ export const IntroSummary: React.FC<{ onOpenTrial: () => void }> = ({ onOpenTria
                 fontSize: '14px',
                 fontWeight: 700,
                 borderRadius: '8px',
-                backgroundColor: '#FF772A',
+                backgroundColor: '#FFE600',
                 color: '#FFFFFF',
                 boxShadow: '0 6px 20px rgba(255, 119, 42, 0.28)'
               }}
@@ -92,7 +92,7 @@ export const IntroSummary: React.FC<{ onOpenTrial: () => void }> = ({ onOpenTria
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: '#FF772A',
+                color: '#FFE600',
                 flexShrink: 0
               }}>
                 <TrendingUp size={22} />
@@ -166,7 +166,7 @@ export const IntroSummary: React.FC<{ onOpenTrial: () => void }> = ({ onOpenTria
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: '#FF772A',
+                color: '#FFE600',
                 flexShrink: 0
               }}>
                 <Cpu size={22} />

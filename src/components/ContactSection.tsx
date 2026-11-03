@@ -92,7 +92,7 @@ export const ContactSection: React.FC = () => {
                       transition: 'border-color 0.2s, box-shadow 0.2s'
                     }}
                     onFocus={(e) => {
-                      e.currentTarget.style.borderColor = '#FF772A';
+                      e.currentTarget.style.borderColor = '#FFE600';
                       e.currentTarget.style.boxShadow = '0 0 0 3px rgba(255, 119, 42, 0.15)';
                     }}
                     onBlur={(e) => {
@@ -124,7 +124,7 @@ export const ContactSection: React.FC = () => {
                         transition: 'border-color 0.2s, box-shadow 0.2s'
                       }}
                       onFocus={(e) => {
-                        e.currentTarget.style.borderColor = '#FF772A';
+                        e.currentTarget.style.borderColor = '#FFE600';
                         e.currentTarget.style.boxShadow = '0 0 0 3px rgba(255, 119, 42, 0.15)';
                       }}
                       onBlur={(e) => {
@@ -155,7 +155,7 @@ export const ContactSection: React.FC = () => {
                         transition: 'border-color 0.2s, box-shadow 0.2s'
                       }}
                       onFocus={(e) => {
-                        e.currentTarget.style.borderColor = '#FF772A';
+                        e.currentTarget.style.borderColor = '#FFE600';
                         e.currentTarget.style.boxShadow = '0 0 0 3px rgba(255, 119, 42, 0.15)';
                       }}
                       onBlur={(e) => {
@@ -188,7 +188,7 @@ export const ContactSection: React.FC = () => {
                       transition: 'border-color 0.2s, box-shadow 0.2s'
                     }}
                     onFocus={(e) => {
-                      e.currentTarget.style.borderColor = '#FF772A';
+                      e.currentTarget.style.borderColor = '#FFE600';
                       e.currentTarget.style.boxShadow = '0 0 0 3px rgba(255, 119, 42, 0.15)';
                     }}
                     onBlur={(e) => {
@@ -207,7 +207,7 @@ export const ContactSection: React.FC = () => {
                     fontSize: '15px',
                     fontWeight: 700,
                     borderRadius: '8px',
-                    backgroundColor: '#FF772A',
+                    backgroundColor: '#FFE600',
                     color: '#FFFFFF',
                     boxShadow: '0 6px 20px rgba(255, 119, 42, 0.28)'
                   }}
@@ -224,13 +224,13 @@ export const ContactSection: React.FC = () => {
                   borderRadius: '50%',
                   background: 'rgba(255, 119, 42, 0.09)',
                   border: '1px solid rgba(255, 119, 42, 0.25)',
-                  color: '#FF772A',
+                  color: '#FFE600',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   margin: '0 auto 16px auto'
                 }}>
-                  <CheckCircle2 size={32} color="#FF772A" />
+                  <CheckCircle2 size={32} color="#FFE600" />
                 </div>
                 <h4 style={{ fontSize: '20px', fontWeight: 800, color: '#191D24', marginBottom: '8px' }}>
                   Thank you, {name}!
@@ -269,7 +269,7 @@ export const ContactSection: React.FC = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: '#FF772A'
+                  color: '#FFE600'
                 }}>
                   <Phone size={18} />
                 </div>
@@ -280,7 +280,7 @@ export const ContactSection: React.FC = () => {
               <div style={{ fontSize: '14px', color: '#4A5260', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 <div>Main Desk: <strong style={{ color: '#191D24' }}>022 6964 5923</strong></div>
                 <div>Sales Support: <strong style={{ color: '#191D24' }}>+91 73308 76025</strong></div>
-                <div>Email: <a href="mailto:info@heramba.in" style={{ color: '#FF772A', textDecoration: 'none', fontWeight: 600 }}>info@heramba.in</a></div>
+                <div>Email: <a href="mailto:info@heramba.in" style={{ color: '#FFE600', textDecoration: 'none', fontWeight: 600 }}>info@heramba.in</a></div>
               </div>
 
               <div style={{ marginTop: '20px', paddingTop: '18px', borderTop: '1px solid #E8EBEF' }}>
@@ -298,7 +298,7 @@ export const ContactSection: React.FC = () => {
                     fontWeight: 700
                   }}
                 >
-                  <MessageSquare size={15} color="#FF772A" />
+                  <MessageSquare size={15} color="#FFE600" />
                   <span>Chat on WhatsApp</span>
                 </a>
               </div>
@@ -332,7 +332,7 @@ export const ContactSection: React.FC = () => {
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', fontSize: '13px' }}>
                 <div>
-                  <strong style={{ color: '#FF772A', fontSize: '13.5px' }}>Mumbai (HQ):</strong>
+                  <strong style={{ color: '#FFE600', fontSize: '13.5px' }}>Mumbai (HQ):</strong>
                   <p style={{ color: '#717B8C', margin: '3px 0 0 0', lineHeight: 1.5 }}>
                     409, Arun Chambers, Tardeo Road, Mumbai 400 034
                   </p>

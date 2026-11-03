@@ -54,7 +54,7 @@ export const AdvantagesSection: React.FC<{ onOpenTrial: () => void; onOpenContac
       tag: 'Plug & Play Retail',
       spec: '43" to 65" • 4K UHD • Tempered Glass Bezel',
       desc: 'Slim floor-standing kiosks engineered for high-footfall entrances, mall atriums, and hotel lobbies with integrated lockable wheels.',
-      icon: <Tv size={22} color="#FF772A" />
+      icon: <Tv size={22} color="#FFE600" />
     },
     {
       title: 'High-Brightness Window Displays',
@@ -68,7 +68,7 @@ export const AdvantagesSection: React.FC<{ onOpenTrial: () => void; onOpenContac
       tag: 'Enterprise Showrooms',
       spec: '0.88mm Bezel • Daisy-Chain 4K • Cloud Canvas',
       desc: 'Seamless multi-panel canvas that transforms airport concourses and corporate flagship lobbies into synchronized visual experiences.',
-      icon: <Layers size={22} color="#FF772A" />
+      icon: <Layers size={22} color="#FFE600" />
     }
   ];
 
@@ -173,7 +173,7 @@ export const AdvantagesSection: React.FC<{ onOpenTrial: () => void; onOpenContac
             }} id="comp-table-header">
               <div>Dimension</div>
               <div>Traditional Static Print</div>
-              <div style={{ color: '#FF772A' }}>Heramba Cloud Signage</div>
+              <div style={{ color: '#FFE600' }}>Heramba Cloud Signage</div>
               <div style={{ textAlign: 'right' }}>Business Impact</div>
             </div>
 
@@ -202,7 +202,7 @@ export const AdvantagesSection: React.FC<{ onOpenTrial: () => void; onOpenContac
                     <span>{row.print}</span>
                   </div>
                   <div style={{ color: '#191D24', fontWeight: 600, paddingRight: '16px', display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-                    <Check size={16} color="#FF772A" style={{ flexShrink: 0, marginTop: '3px' }} />
+                    <Check size={16} color="#FFE600" style={{ flexShrink: 0, marginTop: '3px' }} />
                     <span>{row.heramba}</span>
                   </div>
                   <div style={{ textAlign: 'right' }}>
@@ -211,7 +211,7 @@ export const AdvantagesSection: React.FC<{ onOpenTrial: () => void; onOpenContac
                       padding: '4px 10px',
                       borderRadius: '6px',
                       backgroundColor: 'rgba(255, 119, 42, 0.09)',
-                      color: '#FF772A',
+                      color: '#FFE600',
                       fontSize: '12px',
                       fontWeight: 700
                     }}>
@@ -274,7 +274,7 @@ export const AdvantagesSection: React.FC<{ onOpenTrial: () => void; onOpenContac
                   <h3 style={{ fontSize: '18px', fontWeight: 800, color: '#191D24', marginBottom: '6px' }}>
                     {hw.title}
                   </h3>
-                  <div style={{ fontSize: '12px', fontWeight: 700, color: '#FF772A', marginBottom: '12px' }}>
+                  <div style={{ fontSize: '12px', fontWeight: 700, color: '#FFE600', marginBottom: '12px' }}>
                     {hw.spec}
                   </div>
                   <p style={{ fontSize: '13.5px', color: '#4A5260', lineHeight: 1.55, margin: 0 }}>
@@ -314,7 +314,7 @@ export const AdvantagesSection: React.FC<{ onOpenTrial: () => void; onOpenContac
               className="btn btn-primary"
               style={{
                 padding: '12px 28px',
-                backgroundColor: '#FF772A',
+                backgroundColor: '#FFE600',
                 color: '#FFFFFF',
                 borderRadius: '8px',
                 fontWeight: 700

@@ -67,14 +67,14 @@ export const Footer: React.FC<{ onOpenTrial: () => void; onOpenContact: () => vo
                 <button
                   type="submit"
                   className="btn btn-primary"
-                  style={{ padding: '11px 22px', fontSize: '14px', backgroundColor: '#FF772A' }}
+                  style={{ padding: '11px 22px', fontSize: '14px', backgroundColor: '#FFE600' }}
                 >
                   <span>Subscribe</span>
                 </button>
               </form>
             ) : (
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#FF772A', fontSize: '14px', fontWeight: 700 }}>
-                <CheckCircle2 size={18} color="#FF772A" />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#FFE600', fontSize: '14px', fontWeight: 700 }}>
+                <CheckCircle2 size={18} color="#FFE600" />
                 <span>Thank you! You are now subscribed to Heramba Insights.</span>
               </div>
             )}
@@ -96,7 +96,7 @@ export const Footer: React.FC<{ onOpenTrial: () => void; onOpenContact: () => vo
                 width: '34px',
                 height: '34px',
                 borderRadius: '8px',
-                backgroundColor: '#FF772A',
+                backgroundColor: '#FFE600',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -106,7 +106,7 @@ export const Footer: React.FC<{ onOpenTrial: () => void; onOpenContact: () => vo
                 <Tv size={18} />
               </div>
               <span style={{ fontFamily: 'var(--font-heading)', fontSize: '20px', fontWeight: 800, color: '#191D24' }}>
-                HERAMBA<span style={{ color: '#FF772A' }}>.</span>
+                HERAMBA<span style={{ color: '#FFE600' }}>.</span>
               </span>
             </div>
 
@@ -129,7 +129,7 @@ export const Footer: React.FC<{ onOpenTrial: () => void; onOpenContact: () => vo
               <li><Link href="/solutions" style={{ color: 'inherit', textDecoration: 'none' }}>Digital Standees &amp; Totems</Link></li>
               <li><Link href="/solutions" style={{ color: 'inherit', textDecoration: 'none' }}>Video Wall Displays</Link></li>
               <li><Link href="/features" style={{ color: 'inherit', textDecoration: 'none' }}>Platform Features</Link></li>
-              <li><Link href="/pricing" style={{ color: '#FF772A', textDecoration: 'none', fontWeight: 700 }}>View Pricing →</Link></li>
+              <li><Link href="/pricing" style={{ color: '#FFE600', textDecoration: 'none', fontWeight: 700 }}>View Pricing →</Link></li>
             </ul>
           </div>
 
@@ -158,7 +158,7 @@ export const Footer: React.FC<{ onOpenTrial: () => void; onOpenContact: () => vo
               <li>Mobile: <strong>+91 73308 76025</strong></li>
               <li>North America: <strong>+1 437 986 2288</strong></li>
               <li>Email: info@heramba.in</li>
-              <li><a href="#contact" onClick={(e) => { e.preventDefault(); onOpenContact(); }} style={{ color: '#FF772A', textDecoration: 'none', fontWeight: 700 }}>Get In Touch →</a></li>
+              <li><a href="#contact" onClick={(e) => { e.preventDefault(); onOpenContact(); }} style={{ color: '#FFE600', textDecoration: 'none', fontWeight: 700 }}>Get In Touch →</a></li>
             </ul>
           </div>
         </div>
@@ -203,7 +203,7 @@ export const Footer: React.FC<{ onOpenTrial: () => void; onOpenContact: () => vo
           <div style={{ display: 'flex', gap: '20px' }}>
             <a href="#" onClick={(e) => { e.preventDefault(); alert('Heramba Privacy Policy: We comply with global data privacy and ISO 27001 data protection standards.'); }} style={{ color: 'inherit', textDecoration: 'none' }}>Privacy Policy</a>
             <a href="#" onClick={(e) => { e.preventDefault(); alert('Heramba Terms: 99.9% Cloud SLA uptime guarantee with dedicated customer success assistance.'); }} style={{ color: 'inherit', textDecoration: 'none' }}>Terms of Service</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); onOpenTrial(); }} style={{ color: '#FF772A', textDecoration: 'none', fontWeight: 700 }}>Free Trial</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); onOpenTrial(); }} style={{ color: '#FFE600', textDecoration: 'none', fontWeight: 700 }}>Free Trial</a>
           </div>
         </div>
 
